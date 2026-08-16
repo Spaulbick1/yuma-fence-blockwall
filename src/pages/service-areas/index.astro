@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import { site } from "../../lib/site-config";
+import { organizationSchema, breadcrumbSchema } from "../../lib/schema";
+
+const allLocations = await getCollection("locations");
+const sorted = allLocations.sort((a, b) => a.data.cityName.localeCompare(b.data.cityName));
+---
+
+<BaseLayout
+  title={`Service Areas | ${site.brandName} — Fencing & Block Wall, Yuma County`}
+  description="Fence and block wall contractor matching across the Yuma, AZ service area — Yuma, Fortuna Foothills, San Luis, Somerton, and Wellton."
+  quoteHref="/#quote"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Service Areas", url: `https://${site.domain}/service-areas/` },
+        ])
+      )}
+    />
+  </Fragment>
+
+  <section class="section">
+    <div class="container-content">
+      <p class="eyebrow">Service Areas</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">Fencing & Block Wall Contractors Across Yuma County</h1>
+      <p class="mt-4 max-w-2xl text-fluid-lg text-muted">
+        {site.brandName} connects homeowners across {site.serviceArea.cities.join(", ")} with
+        independent local fencing and block wall contractors. Each area has its own code,
+        terrain, and irrigation-canal considerations — see your city below.
+      </p>
+
+      <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+        {
+          sorted.map((entry) => (
+            <li>
+              <a
+                href={`/service-areas/${entry.slug}/`}
+                class="card-rail flex items-center justify-between gap-4 p-5 hover:shadow-lift transition-shadow"
+              >
+                <span>
+                  <span class="block font-display font-semibold text-fluid-lg text-ink">{entry.data.cityName}</span>
+                  {entry.data.population && (
+                    <span class="block text-fluid-sm text-muted">Population {entry.data.population}</span>
+                  )}
+                </span>
+                <span aria-hidden="true" class="text-caliche-dark">→</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

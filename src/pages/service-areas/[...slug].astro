@@ -1,0 +1,125 @@
+---
+// Location page template — backs every entry in the `locations` content
+// collection (src/content/locations/*.md). Only built for cities with
+// substantively unique local content (skill quality bar: skip rather than
+// thin-page) — see CONTENT_PLAN.md for which of the 5-city service area
+// footprint got a page this phase vs. a future one.
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import LeadForm from "../../components/sections/LeadForm.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("locations");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const data = entry.data;
+---
+
+<BaseLayout
+  title={`Fence & Block Wall Contractors in ${data.cityName} | ${site.brandName}`}
+  description={data.metaDescription}
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Service Areas", url: `https://${site.domain}/service-areas/` },
+          { name: data.cityName, url: `https://${site.domain}${Astro.url.pathname}` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(data.faq))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>{data.cityName}</span>
+      </nav>
+
+      <p class="eyebrow">Service Area</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">{data.title}</h1>
+
+      <p class="mt-5 max-w-2xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        {data.directAnswer}
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div>
+          {
+            data.heroImage && (
+              <img
+                src={data.heroImage}
+                alt={data.heroImageAlt}
+                width="1200"
+                height="800"
+                loading="lazy"
+                class="w-full rounded-card shadow-card mb-10 object-cover"
+              />
+            )
+          }
+
+          <div class="prose-content max-w-none">
+            <Content />
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <a href="/services/fence-installation-yuma-az/" class="card-rail flex items-center justify-between gap-4 p-4 hover:shadow-lift transition-shadow">
+              <span class="font-display font-semibold text-ink">Fencing Services</span>
+              <span aria-hidden="true" class="text-caliche-dark">→</span>
+            </a>
+            <a href="/services/block-wall-installation-yuma-az/" class="card-rail flex items-center justify-between gap-4 p-4 hover:shadow-lift transition-shadow">
+              <span class="font-display font-semibold text-ink">Block Wall & Masonry Services</span>
+              <span aria-hidden="true" class="text-caliche-dark">→</span>
+            </a>
+          </div>
+
+          <FAQ items={data.faq} />
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm
+            title={`Get a Free Quote in ${data.cityName}`}
+            subtitle="Tell us about your project — no obligation."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .prose-content :global(h2) {
+    @apply text-fluid-2xl mt-10 mb-3;
+  }
+  .prose-content :global(h3) {
+    @apply text-fluid-xl mt-8 mb-2;
+  }
+  .prose-content :global(p) {
+    @apply text-fluid-base text-ink mb-4 leading-relaxed;
+  }
+  .prose-content :global(ul),
+  .prose-content :global(ol) {
+    @apply mb-4 pl-6 text-fluid-base text-ink space-y-1.5;
+  }
+  .prose-content :global(ul) {
+    @apply list-disc;
+  }
+  .prose-content :global(strong) {
+    @apply font-semibold text-ink;
+  }
+</style>
