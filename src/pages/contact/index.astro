@@ -1,0 +1,84 @@
+---
+// Form + tracked phone + service-area statement, per CONTENT_PLAN.md Phase 4
+// spec. The LeadForm here carries id="lead-form" (default in the component)
+// so every #contact/#lead-form / /contact/#lead-form link across the site
+// (BaseLayout's default quoteHref, StickyCTA fallbacks) resolves correctly.
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import LeadForm from "../../components/sections/LeadForm.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema } from "../../lib/schema";
+---
+
+<BaseLayout
+  title={`Contact ${site.brandName} | Free Fence & Block Wall Quote — Yuma, AZ`}
+  description="Get a free, no-obligation fence or block wall quote in Yuma, AZ. Serving Yuma, Fortuna Foothills, San Luis, Somerton, and Wellton."
+  quoteHref="#lead-form"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Contact", url: `https://${site.domain}/contact/` },
+        ])
+      )}
+    />
+  </Fragment>
+
+  <section class="section">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Contact</span>
+      </nav>
+
+      <p class="eyebrow">Contact {site.brandName}</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-2xl">Get a Free Fence or Block Wall Quote</h1>
+      <p class="mt-4 max-w-2xl text-fluid-lg text-muted">
+        Tell us about your project and we'll match you with an independent, appropriately-licensed
+        local contractor — no obligation, no pressure.
+      </p>
+
+      <div class="mt-10 grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>Service area</h2>
+          <p>We connect homeowners and property owners with independent contractors across:</p>
+          <ul>
+            {site.serviceArea.cities.map((city) => <li>{city}, AZ</li>)}
+          </ul>
+
+          <h2>Call us</h2>
+          {
+            site.phoneIsPlaceholder ? (
+              <p class="text-muted">
+                Phone line is being set up — use the quote form for the fastest response in the
+                meantime.
+              </p>
+            ) : (
+              <p>
+                <a href={site.phoneHref} data-track="phone_click" class="btn-primary">
+                  Call {site.phoneDisplay}
+                </a>
+              </p>
+            )
+          }
+
+          <h2>What happens after you submit a quote request</h2>
+          <ol>
+            <li>We match your project (fence or block wall, install or repair) to an independent local contractor whose scope fits.</li>
+            <li>A pre-screened contractor reaches out directly to schedule a site visit.</li>
+            <li>You get a written, itemized quote — no obligation to hire.</li>
+          </ol>
+          <p>
+            {site.licensedInsuredHedge}. See our <a href="/about/">About page</a> for the full
+            research and matching methodology.
+          </p>
+        </div>
+
+        <LeadForm title="Request a Free Quote" subtitle="Tell us about your fence or block wall project." />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
