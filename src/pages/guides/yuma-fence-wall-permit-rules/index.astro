@@ -1,0 +1,190 @@
+---
+// YUM-005 ordinance guide (City of Yuma Municipal Code § 154-15.06) — the
+// most heavily-linked forward reference this phase (Header/Footer/FAQ/every
+// service page already point here). Cites the code section by number per
+// operating rule 8. Not legal advice — general-information framing, code
+// citation dated and sourced.
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const faqItems = [
+  {
+    question: "How tall can my fence or wall be in Yuma?",
+    answer:
+      "It depends on location on your lot. Walls and fences over 3 feet tall are barred from a required front-yard setback area, and barrier walls adjacent to canals or drainage channels must be at least 6 feet tall (measured from the high-ground side for subdivision fencing). Side and rear-yard height limits outside those specific zones should be confirmed directly with the City of Yuma Building Safety Division for your exact lot.",
+  },
+  {
+    question: "Do I need a permit to build a fence in Yuma?",
+    answer:
+      "Whether a standalone residential fence needs its own building permit varies by project scope and is best confirmed directly with the City of Yuma Building Safety Division. What is confirmed: a City of Yuma encroachment permit is required for temporary fence removal tied to pool construction, utility work, or residential development, and developers near canals or drainage channels must coordinate barrier-wall specifications with the city and the relevant water/irrigation agency.",
+  },
+  {
+    question: "What material does a canal-adjacent barrier wall need to be?",
+    answer:
+      "City of Yuma code requires barrier walls adjacent to canals or laterals to be solid masonry at minimum, with wrought iron allowed as an alternate specifically for drainage-channel frontage.",
+  },
+  {
+    question: "Does my subdivision require a masonry perimeter wall?",
+    answer:
+      "Many do — City of Yuma code requires subdivision perimeter fencing to be masonry, sealed with an anti-graffiti coating. Confirm against your specific subdivision's plat/CC&Rs as well as city code, since HOA requirements can be more restrictive than the city minimum.",
+  },
+];
+---
+
+<BaseLayout
+  title="Yuma Fence & Wall Permit Rules (City Code § 154-15.06) | Yuma Fence & Wall"
+  description="What City of Yuma Municipal Code § 154-15.06 actually requires for fence and block wall height, materials, canal barriers, and permits — cited directly, dated August 2026."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Guides", url: `https://${site.domain}/guides/yuma-fence-wall-permit-rules/` },
+          { name: "Yuma Fence & Wall Permit Rules", url: `https://${site.domain}/guides/yuma-fence-wall-permit-rules/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Yuma Fence &amp; Wall Permit Rules</span>
+      </nav>
+
+      <p class="eyebrow">Regulatory Guide — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">Yuma Fence &amp; Wall Permit Rules: What the City Code Actually Says</h1>
+
+      <p class="mt-5 max-w-3xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, City of Yuma Municipal Code § 154-15.06 ("Walls and Fences") sets
+        concrete rules for height, material, and permits on any Yuma fence or block wall project —
+        including a 6-foot minimum, solid-masonry requirement for canal-adjacent barrier walls, and
+        a masonry-plus-anti-graffiti-coating requirement for subdivision perimeter fencing.
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <div class="card-rail bg-sand p-5 mb-8">
+            <p class="text-fluid-sm text-muted">
+              <strong class="text-ink">Not legal advice.</strong> This page summarizes City of Yuma
+              Municipal Code § 154-15.06 as a starting point for planning a project — always confirm
+              current requirements for your specific lot with the City of Yuma Building Safety
+              Division before finalizing plans, since ordinances are amended over time. Source:
+              City of Yuma Municipal Code § 154-15.06, hosted by American Legal Publishing
+              (codelibrary.amlegal.com). Verified August 2026.
+            </p>
+          </div>
+
+          <h2>Height rules</h2>
+          <ul>
+            <li>
+              <strong>Front-yard setback.</strong> Walls and fences taller than 3 feet are barred
+              from a required front-yard setback area — a taller fence or wall generally has to sit
+              behind that setback line, not along the property's front edge.
+            </li>
+            <li>
+              <strong>Canal-adjacent barrier walls.</strong> Barrier walls adjacent to canals or
+              drainage channels must be at least 6 feet tall, measured from the high-ground side for
+              subdivision fencing.
+            </li>
+            <li>
+              <strong>Everywhere else.</strong> Side- and rear-yard height limits outside the two
+              zones above vary by lot and zoning — confirm your specific limit with the City of Yuma
+              Building Safety Division before finalizing a design.
+            </li>
+          </ul>
+
+          <h2>Material rules</h2>
+          <ul>
+            <li>
+              <strong>Canal and lateral barrier walls</strong> must be solid masonry at minimum.
+              Wrought iron is allowed as an alternate, but specifically for drainage-channel
+              frontage — not as a general substitute for masonry elsewhere the rule applies.
+            </li>
+            <li>
+              <strong>Subdivision perimeter fencing</strong> must be masonry, sealed with an
+              anti-graffiti coating. This is a common source of surprise for homeowners who assumed
+              a standard wood or vinyl fence would be allowed along a subdivision's outer boundary —
+              check your specific subdivision's requirement before budgeting for a non-masonry
+              option there.
+            </li>
+          </ul>
+
+          <h2>Permit rules</h2>
+          <ul>
+            <li>
+              <strong>Temporary fence removal.</strong> A City of Yuma encroachment permit is
+              required for temporary fence removal tied to pool construction, utility work, or
+              residential development.
+            </li>
+            <li>
+              <strong>Canal-adjacent development.</strong> Developers near canals or drainage
+              channels must coordinate barrier-wall specifications with both the City of Yuma and
+              the relevant water/irrigation agency before building.
+            </li>
+            <li>
+              <strong>Non-access easement.</strong> A 1-foot non-access easement applies outside
+              irrigation district borders — relevant to how close to a canal-adjacent property line
+              a wall or fence can actually sit.
+            </li>
+          </ul>
+
+          <h2>Canal barrier walls: why this matters more in Yuma than most cities</h2>
+          <p>
+            Yuma's agricultural economy runs on an extensive irrigation canal network, and a
+            meaningful share of residential lots — particularly in and around Wellton and other
+            irrigation-district communities — sit adjacent to a canal, lateral, or drainage channel.
+            If your property backs one of these, the barrier-wall height, material, and coordination
+            requirements above aren't optional design preferences; they're the baseline your
+            contractor needs to build to. Ask any contractor bidding a canal-adjacent project whether
+            they've confirmed the specific requirement for your lot with the city and the relevant
+            irrigation district — a bid that doesn't mention this coordination step is worth a direct
+            follow-up question before you sign.
+          </p>
+
+          <h2>Subdivision masonry requirements: check both the city and your HOA</h2>
+          <p>
+            City code sets a floor — a masonry, anti-graffiti-coated perimeter wall — but an HOA's
+            own CC&amp;Rs can add requirements the city code doesn't (specific block color, cap
+            style, height beyond the code minimum, or setback beyond what the city requires). Before
+            budgeting a subdivision perimeter project, check both City of Yuma code and your
+            subdivision's governing documents — they aren't always identical, and satisfying only one
+            of the two can mean redoing work later.
+          </p>
+
+          <h2>How this affects your project — a practical checklist</h2>
+          <ul>
+            <li>Confirm whether your lot backs a canal, lateral, or drainage channel — if so, the 6-foot minimum and solid-masonry requirement likely apply to that boundary.</li>
+            <li>Check your subdivision's plat and CC&amp;Rs for a perimeter-masonry requirement independent of city code.</li>
+            <li>Confirm your front-yard setback line before planning a fence or wall taller than 3 feet near the street.</li>
+            <li>If your project involves temporary fence removal for a pool or utility work, ask your contractor whether the encroachment permit is included in their scope or is your responsibility.</li>
+            <li>For any canal-adjacent project, confirm your contractor has coordinated (or will coordinate) with the relevant irrigation/drainage agency, not just the city.</li>
+          </ul>
+
+          <p>
+            Not sure whether your specific project needs a fence or a code-required masonry wall?
+            <a href="/guides/fence-vs-block-wall-yuma/">Read the full fence vs. block wall
+            comparison</a>, or <a href="#quote">request a free quote</a> and describe your lot — an
+            independent local contractor can confirm what actually applies before you commit to a
+            design.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Quote" subtitle="Tell us about your project — including whether your lot is canal-adjacent." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
