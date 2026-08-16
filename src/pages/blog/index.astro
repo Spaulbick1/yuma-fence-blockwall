@@ -1,0 +1,63 @@
+---
+// Blog hub — lists the pillar posts collection. Phase 4 (CONTENT_PLAN.md
+// next-session prompt: "3-5 pillar blog posts"). Each post is 2,000+ words,
+// hub-and-spoke linked back into the money pages (cost guides, comparison
+// guide, permit guide, license guide, service pages) per the skill's
+// content quality bar. Article/ItemList schema deferred to Phase 6
+// (geo-aeo.md rule 8) — this index carries BreadcrumbList only, matching
+// every other Phase 3/4 page's schema scope.
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const allPosts = (await getCollection("posts")).sort(
+  (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
+);
+---
+
+<BaseLayout
+  title={`Fence & Block Wall Guides | ${site.brandName} Blog — Yuma, AZ`}
+  description="Practical, Yuma-specific fence and block wall guides: monsoon storm damage, caliche soil, HOA rules, and seasonal maintenance."
+  quoteHref="/contact/#lead-form"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Blog", url: `https://${site.domain}/blog/` },
+        ])
+      )}
+    />
+  </Fragment>
+
+  <section class="section">
+    <div class="container-content">
+      <p class="eyebrow">Guides &amp; Resources</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">Fence &amp; Block Wall Guides for Yuma, AZ</h1>
+      <p class="mt-4 max-w-2xl text-fluid-lg text-muted">
+        Practical, Yuma-specific guides on the things that actually affect a fence or block wall
+        project here — monsoon storms, caliche soil, HOA rules, and seasonal timing. Every guide is
+        sourced and dated, same as the rest of this site.
+      </p>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2">
+        {
+          allPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}/`}
+              class="card-rail flex flex-col p-6 hover:shadow-lift transition-shadow"
+            >
+              <span class="text-fluid-sm text-muted">{post.data.publishDate}</span>
+              <span class="mt-2 font-display text-fluid-xl font-bold text-ink">{post.data.title}</span>
+              <span class="mt-3 text-fluid-base text-muted">{post.data.excerpt}</span>
+              <span class="mt-4 font-semibold text-caliche-dark">Read the guide →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
