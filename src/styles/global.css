@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-sans;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-bold text-ink;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  /* Injected/markdown content (set:html) bypasses component classes —
+     shipped unstyled once elsewhere in the portfolio (lessons-learned #8).
+     This rule guarantees any link inside prose content is always visibly
+     styled even without an explicit class. */
+  main a:not([class]) {
+    @apply text-caliche-dark underline underline-offset-2 decoration-caliche/50 hover:decoration-caliche-dark;
+  }
+  :focus-visible {
+    outline: 3px solid theme("colors.iron-dark");
+    outline-offset: 2px;
+  }
+  .skip-link {
+    @apply absolute -top-16 left-2 z-50 rounded bg-iron-dark px-4 py-2 text-white transition-all;
+  }
+  .skip-link:focus {
+    @apply top-2;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-14 sm:py-20;
+  }
+  .container-content {
+    @apply mx-auto max-w-content px-5 sm:px-8;
+  }
+  .eyebrow {
+    @apply text-fluid-sm font-display font-semibold uppercase tracking-[0.14em] text-caliche-dark;
+  }
+
+  /* ---- Button hierarchy (v1.17): phone = filled/primary, quote = outlined/secondary ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-card px-5 py-3 text-fluid-base font-display font-semibold uppercase tracking-wide transition-colors;
+  }
+  .btn-primary,
+  .btn-filled {
+    @apply btn bg-iron-dark text-white hover:bg-[#12151A] shadow-card;
+  }
+  .btn-secondary,
+  .btn-outline {
+    @apply btn border-2 border-iron-dark text-iron-dark hover:bg-iron-50;
+  }
+  .btn-ghost {
+    @apply btn text-iron-dark hover:bg-iron-50;
+  }
+
+  /* ---- Shape signature: "Post & Rail" card (.card-rail) ----
+     Twin corner "post cap" marks (two short 3px-wide, 14px-tall iron-dark
+     bars sitting outside the card's top-left/top-right corners) plus a
+     horizontal rail: a 2px sand-line border directly beneath the card's
+     header content (.card-rail-header). See DESIGN_SYSTEM.md §4. Distinct
+     from every other portfolio card motif (rounded-only, left-border,
+     chamfered corner, corner-square, Oxford rule, hairline-no-card,
+     waterline gradient, sun-ray, dimension-tick — the last of which was
+     this site's own earlier .card-spec, superseded this phase). Note: on a
+     card that also sets `overflow-hidden` (e.g. the PropertyLineComparison
+     table wrapper, clipped for its own rounded corners), the post-caps sit
+     outside the box and are clipped along with it — cosmetic only, the
+     card's other treatment (opaque white surface, square corners) still
+     reads correctly there. */
+  .card-rail {
+    @apply relative rounded-card bg-white shadow-card;
+  }
+  .card-rail::before,
+  .card-rail::after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    width: 3px;
+    height: 14px;
+    background-color: theme("colors.iron-dark");
+  }
+  .card-rail::before {
+    left: 14px;
+  }
+  .card-rail::after {
+    right: 14px;
+  }
+  .card-rail-header {
+    @apply border-b-2 border-sand-line pb-4 mb-4;
+  }
+
+  /* ---- Prose content typography — shared by every standalone guide/cost/
+     legal page (Phase 4) as well as the service template (which also keeps
+     its own scoped copy; harmless duplication, same rules). Centralizing
+     here means new long-form pages just add class="prose-content" instead
+     of re-declaring the block each time. ---- */
+  .prose-content h2 {
+    @apply text-fluid-2xl mt-10 mb-3;
+  }
+  .prose-content h3 {
+    @apply text-fluid-xl mt-8 mb-2;
+  }
+  .prose-content p {
+    @apply text-fluid-base text-ink mb-4 leading-relaxed;
+  }
+  .prose-content ul,
+  .prose-content ol {
+    @apply mb-4 pl-6 text-fluid-base text-ink space-y-1.5;
+  }
+  .prose-content ul {
+    @apply list-disc;
+  }
+  .prose-content ol {
+    @apply list-decimal;
+  }
+  .prose-content strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-content table {
+    @apply w-full border-collapse mb-6 text-fluid-sm;
+  }
+  .prose-content th,
+  .prose-content td {
+    @apply border border-sand-line p-2.5 text-left align-top;
+  }
+  .prose-content th {
+    @apply bg-sand font-display font-semibold;
+  }
+  .prose-content a {
+    @apply text-caliche-dark underline underline-offset-2 decoration-caliche/50 hover:decoration-caliche-dark;
+  }
+
+  /* ---- Ruler-strip divider — used by strip-style bands separated by tick
+     dividers instead of card boxes. ---- */
+  .ruler-divider {
+    @apply hidden sm:block h-8 w-px self-center;
+    background-image: repeating-linear-gradient(
+      0deg,
+      theme("colors.sand-line") 0,
+      theme("colors.sand-line") 2px,
+      transparent 2px,
+      transparent 6px
+    );
+  }
+}
