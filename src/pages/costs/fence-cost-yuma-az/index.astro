@@ -1,0 +1,213 @@
+---
+// Money page — the top Phase 4 priority per CONTENT_PLAN.md §1 (already
+// heavily linked-to from Home, both fence spoke pages, and the fence hub).
+// Real $ figures (homeblue.com, Yuma-local) already used consistently
+// elsewhere on the site — this page is the canonical, full-methodology
+// destination they all point to. geo-aeo.md rule 2: quotable direct-answer
+// block before the table/methodology.
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const faqItems = [
+  {
+    question: "How much does a fence cost per linear foot in Yuma, AZ?",
+    answer:
+      "As of August 2026: chain link runs roughly $10–$13/linear ft installed, wood privacy $17–$24/linear ft, and vinyl $26–$33/linear ft — all Yuma-area figures. A typical 150-linear-foot residential perimeter runs from about $1,500 (chain link) to nearly $5,000 (vinyl), before gates, tear-out, or difficult terrain.",
+  },
+  {
+    question: "Why is my quote higher than these ranges?",
+    answer:
+      "The most common reasons: caliche (hardpan) soil that slows post-hole digging, gate count and width (especially double-drive gates for RV/trailer access), tear-out and haul-away of an existing fence, sloped or irregular lot lines, and premium colors or textures on vinyl. A contractor who's actually walked your property can explain which of these apply — a phone-only quote that doesn't account for site conditions is a common source of change orders later.",
+  },
+  {
+    question: "Is a permit required before installing a fence in Yuma?",
+    answer:
+      'It depends on height, material, and location — City of Yuma Municipal Code § 154-15.06 sets specific rules for setbacks and canal-adjacent barrier walls. See the <a href="/guides/yuma-fence-wall-permit-rules/">full permit &amp; height rules guide</a> before you budget a project.',
+  },
+  {
+    question: "Does this price include a block wall instead of a fence?",
+    answer:
+      'No — block wall and masonry pricing is driven by very different factors (height, length, footing depth, block type) and we don\'t yet have a verified Yuma-local $/sq ft figure we\'re willing to publish. See the <a href="/costs/block-wall-cost-yuma-az/">block wall cost guide</a> for what we do know and how to get a real number.',
+  },
+];
+---
+
+<BaseLayout
+  title="Fence Cost in Yuma, AZ (2026 Pricing Guide) | Yuma Fence & Wall"
+  description="Real 2026 fence installation costs in Yuma, AZ by material: chain link, wood, and vinyl, per linear foot. See the methodology, a full cost table, and what actually moves the price."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Cost Guides", url: `https://${site.domain}/costs/fence-cost-yuma-az/` },
+          { name: "Fence Cost in Yuma, AZ", url: `https://${site.domain}/costs/fence-cost-yuma-az/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Fence Cost in Yuma, AZ</span>
+      </nav>
+
+      <p class="eyebrow">Cost Guide — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">How Much Does a Fence Cost in Yuma, AZ?</h1>
+
+      <p class="mt-5 max-w-3xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, fence installation in Yuma, AZ typically runs $10–$13 per linear foot
+        for chain link, $17–$24 per linear foot for wood privacy, and $26–$33 per linear foot for
+        vinyl — so a standard 150-linear-foot residential perimeter runs roughly $1,500–$4,950
+        depending on material. Call {site.brandName} or use the free quote form below to get
+        matched with an independent local contractor for an exact price.
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>Yuma fence cost by material</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Material</th>
+                <th scope="col">Cost per linear ft</th>
+                <th scope="col">150 ft perimeter</th>
+                <th scope="col">Typical use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Chain link</td>
+                <td>$10–$13</td>
+                <td>$1,500–$1,950</td>
+                <td>Budget-friendly, durable, low-privacy boundary marking</td>
+              </tr>
+              <tr>
+                <td>Wood privacy</td>
+                <td>$17–$24</td>
+                <td>$2,550–$3,600</td>
+                <td>Backyard privacy, traditional look, more upkeep in desert sun</td>
+              </tr>
+              <tr>
+                <td>Vinyl</td>
+                <td>$26–$33</td>
+                <td>$3,900–$4,950</td>
+                <td>Privacy, pool enclosures, lowest long-term maintenance</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-fluid-sm text-muted -mt-2 mb-6">
+            Figures are for installed cost (materials + labor) on a standard residential lot with
+            typical soil conditions. Wrought iron, aluminum, and specialty security fencing run
+            higher than any of the three materials above — request a quote for a project-specific
+            estimate.
+          </p>
+
+          <h2>Our methodology</h2>
+          <p>
+            These figures are sourced from Yuma-local pricing data (homeblue.com), which is one of
+            the few cost aggregators that publishes region-specific numbers for the Yuma market
+            rather than a flat national average. We date-stamp every figure we publish and recheck
+            it periodically — if you're reading this more than a few months after the date above,
+            treat it as a starting point and confirm current pricing with a quote, since material
+            and labor costs shift. We do not publish a figure we can't point to a source for; see
+            the <a href="/costs/block-wall-cost-yuma-az/">block wall cost guide</a> for an example
+            of us declining to publish a number until we have one we trust.
+          </p>
+
+          <h2>What actually moves the price</h2>
+          <ul>
+            <li>
+              <strong>Caliche soil.</strong> Much of the Yuma area sits on caliche — a naturally
+              cemented, calcium-carbonate hardpan common across the Sonoran Desert. Post-hole
+              digging through it takes longer and often needs different equipment than a standard
+              post-hole digger. A contractor who hasn't priced for caliche in your specific yard is
+              a common source of change-order surprises after work starts.
+            </li>
+            <li>
+              <strong>Gate count and width.</strong> Every gate — especially wide double-drive gates
+              for RV or trailer access, common on larger Yuma residential lots — adds hardware and
+              labor cost beyond the linear-footage rate.
+            </li>
+            <li>
+              <strong>Height and privacy style.</strong> A 6-foot solid-privacy panel costs more per
+              foot than a 4-foot picket-style panel of the same material.
+            </li>
+            <li>
+              <strong>Tear-out and haul-away.</strong> Removing an existing chain-link or wood fence
+              before the new one goes in is usually a separate line item.
+            </li>
+            <li>
+              <strong>Terrain and lot shape.</strong> Sloped yards, irregular property lines, or
+              existing hardscape (patios, block walls, utility boxes) near the fence line can add
+              labor time.
+            </li>
+            <li>
+              <strong>Canal or subdivision code requirements.</strong> A lot backing a canal or
+              drainage channel, or sitting inside a subdivision with a perimeter-masonry
+              requirement, may need materials or a wall instead of a fence in certain locations —
+              see the <a href="/guides/yuma-fence-wall-permit-rules/">permit &amp; height rules
+              guide</a> before you budget.
+            </li>
+          </ul>
+
+          <h2>Fence vs. block wall — which do you actually need?</h2>
+          <p>
+            Not every project that starts as a "fence quote" ends up being a fence. Arizona ROC
+            license R-14 (Fencing) covers metal, wood, and cement block fencing but excludes
+            retaining-wall installation, while R-31 (Masonry) covers the broader structural work —
+            and City of Yuma code requires masonry construction in some locations (canal-adjacent
+            barrier walls, some subdivision perimeters) regardless of what a homeowner originally
+            had in mind. Read the <a href="/guides/fence-vs-block-wall-yuma/">full fence vs. block
+            wall comparison</a> before you request quotes, so you're comparing apples to apples.
+          </p>
+
+          <h2>Vetting checklist before you sign</h2>
+          <ul>
+            <li>
+              Confirm which Arizona ROC license classification the bid is under — see the
+              <a href="/guides/fence-masonry-license-arizona/">R-14 vs. R-31 license guide</a>.
+            </li>
+            <li>
+              Verify the license number directly at <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a>
+              rather than taking a "licensed and insured" claim at face value — {site.licensedInsuredHedge}.
+            </li>
+            <li>Get the linear footage, gate count, height, and material spelled out in writing, not just a total dollar figure.</li>
+            <li>Ask directly whether the quote accounts for caliche/hardpan excavation, and whether tear-out of an existing fence is included.</li>
+            <li>Get at least two independent quotes — pricing on identical scope can vary meaningfully between local contractors.</li>
+          </ul>
+
+          <h2>Red flags</h2>
+          <ul>
+            <li>A quote given without the contractor visiting the property.</li>
+            <li>No mention of post depth, concrete cure time, or how caliche will be handled.</li>
+            <li>Reluctance to provide an Arizona ROC license number, or a number that comes back inactive/suspended at roc.az.gov.</li>
+            <li>Pressure to sign same-day for a "discount."</li>
+          </ul>
+
+          <p>
+            Ready to compare real quotes for your project?
+            <a href="#quote">Request a free, no-obligation quote</a> and get matched with an
+            independent local contractor.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Fence Quote" subtitle="Tell us about your project — no obligation." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
