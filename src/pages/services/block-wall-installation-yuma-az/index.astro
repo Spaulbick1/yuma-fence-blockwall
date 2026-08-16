@@ -1,0 +1,111 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { organizationSchema, breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const allServices = await getCollection("services");
+const wallEntries = allServices
+  .filter((e) => e.data.trade === "wall")
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const faqItems = [
+  {
+    question: "What's the difference between a block wall and a decorative block fence?",
+    answer:
+      "A structural perimeter or retaining wall falls under Arizona ROC's R-31 (Masonry) license; a low decorative block fence (no structural/retaining function) can fall under R-14 (Fencing). See the R-14 vs. R-31 license guide for the full distinction — it matters for which license your contractor needs to hold.",
+  },
+  {
+    question: "Why do some Yuma subdivisions require masonry perimeter walls?",
+    answer:
+      "City of Yuma Municipal Code § 154-15.06 requires subdivision perimeter fencing to be masonry, sealed with an anti-graffiti coating, in many developments — a code requirement, not just an HOA preference. See the permit & height guide for the full ordinance summary.",
+  },
+  {
+    question: "How much does a block wall cost in Yuma, AZ?",
+    answer:
+      "Pricing depends heavily on height, length, and site conditions — we don't have a verified Yuma-local $/sq ft figure we're willing to publish yet, so the most accurate number comes from a free on-site quote from an independent local masonry contractor.",
+  },
+];
+---
+
+<BaseLayout
+  title={`Block Wall & Masonry Installation in Yuma, AZ | ${site.brandName}`}
+  description="Perimeter block walls, retaining walls, and masonry repair in Yuma, AZ. City code requirements, license guidance, and a free-quote request."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Block Wall & Masonry Services", url: `https://${site.domain}/services/block-wall-installation-yuma-az/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8">
+    <div class="container-content">
+      <p class="eyebrow">Block Wall & Masonry — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">Block Wall & Masonry Installation in Yuma, AZ</h1>
+      <p class="mt-5 max-w-2xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, we don't have a verified Yuma-local block wall $/sq ft figure we're
+        willing to publish — pricing depends heavily on height, length, and soil conditions, so
+        {site.brandName} connects you with an independent local R-31 masonry contractor for a
+        free, no-obligation on-site quote.
+      </p>
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div>
+          <h2 class="text-fluid-2xl">Compare block wall & masonry services</h2>
+          <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+            {
+              wallEntries.map((entry) => (
+                <li>
+                  <a
+                    href={`/services/${entry.slug}/`}
+                    class="card-rail flex items-center justify-between gap-4 p-4 hover:shadow-lift transition-shadow"
+                  >
+                    <span>
+                      <span class="block font-display font-semibold text-ink">{entry.data.title}</span>
+                      <span class="block text-fluid-sm text-muted">{entry.data.licenseNote}</span>
+                    </span>
+                    <span aria-hidden="true" class="text-caliche-dark">→</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+
+          <p class="mt-8 text-fluid-base text-muted max-w-2xl">
+            Also cover decorative block fencing and block wall repair (cracks, leaning sections,
+            graffiti-coat touch-up) in the Yuma area — dedicated pages for each are coming as this
+            site's content library expands. In the meantime, tell us the project details in the
+            quote form and we'll match you with an independent local contractor who covers it.
+          </p>
+
+          <div class="mt-10 card-rail bg-sand p-6">
+            <p class="font-display font-semibold uppercase tracking-wide text-iron-dark">Not sure a block wall is what you need?</p>
+            <p class="mt-2 text-fluid-base text-muted">
+              If your property isn't subdivision-governed and canal-adjacent barrier rules don't
+              apply, a fence may be the simpler, lower-cost option.
+              <a href="/guides/fence-vs-block-wall-yuma/">Compare fencing vs. block wall</a> or see
+              <a href="/services/fence-installation-yuma-az/">fencing services</a>.
+            </p>
+          </div>
+
+          <FAQ items={faqItems} />
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Block Wall Quote" subtitle="Tell us about your project — no obligation." />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
