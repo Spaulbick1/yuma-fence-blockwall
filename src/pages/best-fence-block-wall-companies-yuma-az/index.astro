@@ -1,0 +1,182 @@
+---
+// Ships as vetting-methodology framing from day one per the skill's
+// map-pack-reality rule and KEYWORD_RESEARCH.md §2 item 4 — not a raw
+// ranked list of named competitors. Once a renter signs for this
+// service/zip, a future phase reframes this page around that renter
+// (phase-8-launch.md's renter acquisition timeline) rather than removing it.
+// No specific competitor names/profiles here: compliance.md rule 1 (no fake
+// social proof) and rule 4 (no unverified claims about renters) both counsel
+// against implicitly vouching for businesses whose license status we
+// couldn't confirm (claude_FACTS_YUMA.md YUM-006).
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import LeadForm from "../../components/sections/LeadForm.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../lib/schema";
+
+const faqItems = [
+  {
+    question: "What makes a fence or block wall company 'the best' in Yuma?",
+    answer:
+      "There's no single objective ranking — the right contractor depends on your specific project (fence vs. wall, material, timeline, budget). What's consistent across a genuinely good local contractor: an active, correctly-scoped Arizona ROC license, a written itemized quote after an actual site visit, clear answers about caliche soil and code requirements specific to your lot, and no pressure to sign same-day.",
+  },
+  {
+    question: "Should I trust a company's own 'licensed and insured' claim?",
+    answer:
+      'Verify it yourself rather than taking the claim at face value — search the business name and license number directly at <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a>. A legitimate contractor has no reason to be hesitant about this; a business that resists sharing its license number is a real red flag.',
+  },
+  {
+    question: "How many quotes should I get before choosing a contractor?",
+    answer:
+      "At least two, ideally three, especially for a larger block wall or masonry project where pricing can vary meaningfully by contractor and scope interpretation. Make sure every quote you compare covers the same scope — material, height, gate count, and whether tear-out is included — so you're comparing apples to apples.",
+  },
+  {
+    question: "Can you just tell me who to hire?",
+    answer:
+      'We connect Yuma-area homeowners with independent, third-party fencing and block wall contractors through our free quote request — <a href="#quote">tell us about your project</a> and we\'ll match you with a contractor whose scope fits, but the vetting steps on this page are worth doing yourself regardless of how you find a contractor.',
+  },
+];
+---
+
+<BaseLayout
+  title="How to Choose the Best Fence & Block Wall Company in Yuma, AZ"
+  description="A real vetting methodology for choosing a fence or block wall contractor in Yuma, AZ: license verification, quote comparison, red flags, and the questions that actually matter."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Best Fence & Block Wall Companies in Yuma, AZ", url: `https://${site.domain}/best-fence-block-wall-companies-yuma-az/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Best Fence &amp; Block Wall Companies in Yuma, AZ</span>
+      </nav>
+
+      <p class="eyebrow">Vetting Guide — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">How to Choose the Best Fence or Block Wall Company in Yuma, AZ</h1>
+
+      <p class="mt-5 max-w-3xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, there's no single "best" fence or block wall company for every Yuma
+        project — the right contractor depends on your material, scope, and timeline. What matters
+        more than a ranking is a repeatable way to vet whoever you're considering: verified Arizona
+        ROC licensing, an actual site-visit quote, and a clear answer on caliche soil and Yuma code
+        requirements. That's what this guide walks through.
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>Why we're not publishing a ranked list</h2>
+          <p>
+            Most "best of" pages for a local trade are either a ranked list based on nothing more
+            verifiable than a search result's ad spend, or a set of profiles built on marketing
+            copy the businesses wrote about themselves. We'd rather give you a methodology you can
+            actually use yourself — one that works regardless of which specific company you're
+            considering, and one that doesn't ask you to trust our opinion of a business's
+            reputation over your own verification of its license, insurance, and quote.
+          </p>
+
+          <h2>Step 1: Verify the Arizona ROC license — don't take "licensed and insured" at face value</h2>
+          <p>
+            Every legitimate fence or block wall contractor operating in Arizona should hold an
+            active Arizona Registrar of Contractors (ROC) license. Search the business name and
+            license number directly at <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a>
+            (Contractor Search tool) rather than trusting a badge or claim on a company's website.
+            Confirm three things: the license is Active (not Suspended or Inactive), the
+            classification matches your project (R-14 Fencing vs. R-31 Masonry — see the
+            <a href="/guides/fence-masonry-license-arizona/">full license guide</a>), and the
+            business name on the license reasonably matches who you're actually hiring.
+          </p>
+          <p>
+            One practical wrinkle: ROC's search results are indexed by the mailing address and
+            legal entity name on file, not by marketing/DBA name or service area — a real,
+            actively-operating Yuma business can fail to show up in a simple city-name search if its
+            license is filed under a different city, a PO box, or a legal entity name that doesn't
+            match its public branding. If a business doesn't turn up under the name on its website,
+            ask directly for its exact license number rather than assuming it isn't licensed.
+          </p>
+
+          <h2>Step 2: Get an actual on-site quote, not a phone estimate</h2>
+          <p>
+            Yuma's caliche soil, canal-adjacent code requirements, and lot-specific setback rules
+            all affect real project cost and scope — none of which a contractor can accurately price
+            without seeing your property. A firm quote given entirely over the phone or from a
+            photo, without a site visit, is one of the more reliable predictors of a change-order
+            surprise once work starts.
+          </p>
+
+          <h2>Step 3: Confirm the quote covers your actual scope</h2>
+          <ul>
+            <li>Linear footage or square footage, spelled out — not just a total dollar figure.</li>
+            <li>Material and height.</li>
+            <li>Gate count, width, and hardware (for fencing).</li>
+            <li>Footing depth and reinforcement (for a wall, especially a retaining wall).</li>
+            <li>Whether tear-out and haul-away of existing fencing/wall material is included.</li>
+            <li>Whether caliche/hardpan excavation is priced in or billed as an add-on if encountered.</li>
+          </ul>
+
+          <h2>Step 4: Ask Yuma-specific questions</h2>
+          <ul>
+            <li>"Have you priced this job accounting for caliche in my specific yard?"</li>
+            <li>"Is my lot adjacent to a canal or drainage channel, and if so, does this project need to meet the § 154-15.06 barrier-wall requirements?" — see the <a href="/guides/yuma-fence-wall-permit-rules/">full permit &amp; code guide</a>.</li>
+            <li>"Does my subdivision require masonry with an anti-graffiti coating for this project?"</li>
+            <li>"What wind-load rating does your fence system carry?" (relevant given Arizona's monsoon season, roughly July–September)</li>
+          </ul>
+
+          <h2>Step 5: Get at least two independent quotes</h2>
+          <p>
+            Pricing for identical scope can vary meaningfully between local contractors, especially
+            for block wall and masonry work where labor rates and footing/reinforcement approach
+            differ more than they do for standard fencing. Two or three quotes on the same written
+            scope give you a real basis for comparison — a single quote gives you a single data
+            point, not a market rate.
+          </p>
+
+          <h2>Red flags, across any contractor</h2>
+          <ul>
+            <li>A firm price without a site visit.</li>
+            <li>Reluctance to share a license number, or a number that comes back inactive/suspended.</li>
+            <li>No mention of post depth, footing depth, or caliche handling.</li>
+            <li>Pressure to sign same-day for a discount.</li>
+            <li>A verbal-only quote with nothing in writing.</li>
+            <li>Payment demanded fully upfront before any work begins.</li>
+          </ul>
+
+          <h2>The Yuma market, honestly</h2>
+          <p>
+            Yuma has multiple established local companies doing fencing and masonry work, plus a
+            broader pool of Arizona ROC-licensed contractors who take jobs in the area. We're not in
+            a position to vouch for any specific business's reputation or verify every claim on
+            their own marketing pages — that's exactly why the steps above exist. Whoever you end up
+            hiring, running them through this checklist takes maybe fifteen minutes and meaningfully
+            reduces your risk on a project that, for a full block wall, can run into five figures.
+          </p>
+
+          <p>
+            Prefer to skip the search and get matched directly?
+            <a href="#quote">Request a free, no-obligation quote</a> and we'll connect you with an
+            independent local contractor whose scope fits your project — you're still welcome (and
+            encouraged) to run them through this same checklist before signing anything.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get Matched With a Contractor" subtitle="Tell us about your project — no obligation." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
