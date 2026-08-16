@@ -1,0 +1,27 @@
+---
+// Built but NOT imported on any page until real testimonials exist
+// (lessons-learned #10 / compliance.md rule 1). Sample content stays
+// quarantined here — do not wrap on a live page.
+const sampleTestimonials = [
+  {
+    quote: "[SAMPLE — REPLACE BEFORE LAUNCH] Fast quote, showed up on time, wall looks great.",
+    name: "[SAMPLE — REPLACE BEFORE LAUNCH]",
+  },
+];
+---
+
+<section class="section bg-sand">
+  <div class="container-content">
+    <h2 class="text-fluid-2xl">What Yuma Homeowners Say</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        sampleTestimonials.map((t) => (
+          <blockquote class="card-rail p-6">
+            <p class="text-fluid-base text-ink">"{t.quote}"</p>
+            <footer class="mt-4 text-fluid-sm font-semibold text-muted">— {t.name}</footer>
+          </blockquote>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,164 @@
+---
+// Archetype-defining component — "The Property Line" (see DESIGN_SYSTEM.md
+// §3 for the full archetype rationale). This IS the homepage's above-the-fold
+// primary element: a head-to-head Fence vs. Block Wall spec-sheet, not a
+// headline hero, not a two-panel routing unit, not a calculator, not a
+// situation-routing table. It exists because "fence vs. block wall" /
+// "which is better for privacy, HOA, cost, maintenance" is this niche's
+// single biggest confirmed content gap (KEYWORD_RESEARCH.md §2 item 1) — no
+// competitor site combines both trades under one brand, let alone compares
+// them head-to-head on the homepage itself.
+//
+// Cost figures: the fence range is sourced (NICHE_VALIDATION.md Gate 1,
+// homeblue.com Yuma-local pricing). Block wall intentionally does NOT show a
+// dollar figure — Phase 1's explicit decision (KEYWORD_RESEARCH.md §2 item 2)
+// was to route block wall to a free-quote CTA until a real Yuma-sourced
+// number is confirmed, rather than publish the national $15-35/sq ft proxy
+// as if it were local. Do not add a block-wall $ figure here without first
+// updating claude_FACTS_YUMA's "known gaps" entry.
+import { site } from '../../lib/site-config';
+
+interface Props {
+  quoteHref: string;
+}
+const { quoteHref } = Astro.props;
+
+const rows = [
+  {
+    label: 'Typical Yuma Cost',
+    fence: '$10–$33 per linear ft (chain link to vinyl)',
+    wall: 'Varies by height & material — request a free on-site quote',
+  },
+  {
+    label: 'Privacy',
+    fence: 'Low (chain link) to full (vinyl, wood, block-fence style)',
+    wall: 'Full, permanent privacy and sound buffering',
+  },
+  {
+    label: 'Yuma Code / HOA Fit',
+    fence: 'Common for perimeter & pool fencing — height limits apply',
+    wall: 'Often required for subdivision perimeters (masonry + anti-graffiti coating)',
+  },
+  {
+    label: 'Maintenance',
+    fence: 'Depends on material — wood highest, vinyl/chain link lowest',
+    wall: 'Very low — occasional resealing or graffiti removal',
+  },
+  {
+    label: 'Typical Lifespan',
+    fence: '15–30+ years depending on material',
+    wall: '30+ years',
+  },
+  {
+    label: 'Best For',
+    fence: 'Budget-conscious perimeters, pool code compliance, curb appeal',
+    wall: 'Canal/drainage barriers, subdivision perimeters, sound & privacy',
+  },
+];
+---
+
+<section
+  class="section relative isolate overflow-hidden pt-8 sm:pt-12"
+  aria-labelledby="property-line-heading"
+>
+  {/* Full-bleed background photo (see DESIGN_SYSTEM.md §3 addendum —
+      sourced/licensed/contrast-verified). A dark scrim sits between the
+      photo and the text layer at 75% opacity: computed against a
+      worst-case bright-sky pixel this still clears WCAG AA (~6.85:1) for
+      solid white text — see the contrast note in DESIGN_SYSTEM.md before
+      changing the scrim opacity or swapping in colored (non-white) text
+      here, since caliche-toned text does NOT clear AA at this opacity. */}
+  <div
+    class="absolute inset-0 -z-20 bg-[url('/images/property-line-bg.webp')] bg-cover bg-center"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="absolute inset-0 -z-10 bg-iron-dark/75" aria-hidden="true"></div>
+
+  <div class="container-content">
+    <p class="uppercase font-display font-semibold tracking-[0.14em] text-fluid-sm text-white mb-2">
+      The Property Line
+    </p>
+    <h1
+      id="property-line-heading"
+      class="font-display font-bold text-fluid-3xl mb-3 max-w-3xl text-white"
+    >
+      Fence or Block Wall in Yuma? Compare Both Before You Call Anyone.
+    </h1>
+    <p class="text-white text-fluid-lg mb-3 max-w-2xl font-medium">
+      As of August 2026, fencing in Yuma, AZ typically runs $10–$33 per linear foot installed
+      depending on material, while block wall and masonry pricing depends on height and material —
+      <span class="font-semibold">Yuma Fence &amp; Wall</span> connects you with an independent local
+      contractor for a free, no-obligation quote on either.
+    </p>
+    <p class="text-white/90 text-fluid-base mb-8 max-w-2xl">
+      Every project is different — see how fencing and block wall actually compare on cost,
+      privacy, Yuma code fit, and upkeep before you call anyone.
+    </p>
+
+    <div class="card-rail overflow-hidden p-0">
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[640px] border-collapse">
+          <thead>
+            <tr class="bg-iron-dark text-white">
+              <th class="text-left font-display font-semibold p-4 w-1/3">&nbsp;</th>
+              <th class="text-left font-display font-semibold p-4 w-1/3 border-l border-white/15">
+                Fencing
+              </th>
+              <th class="text-left font-display font-semibold p-4 w-1/3 border-l border-white/15">
+                Block Wall
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rows.map((row, i) => (
+                <tr class={i % 2 === 0 ? 'bg-white' : 'bg-sand'}>
+                  <th
+                    scope="row"
+                    class="text-left font-display font-semibold p-4 align-top text-fluid-sm text-muted"
+                  >
+                    {row.label}
+                  </th>
+                  <td class="p-4 align-top border-l border-sand-line text-fluid-sm">{row.fence}</td>
+                  <td class="p-4 align-top border-l border-sand-line text-fluid-sm">{row.wall}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid sm:grid-cols-2 border-t border-sand-line">
+        <a
+          href="/services/fence-installation-yuma-az/"
+          class="btn-secondary rounded-none justify-center py-5 border-0 sm:border-r border-sand-line"
+        >
+          Get a Fence Quote
+        </a>
+        <a
+          href="/services/block-wall-installation-yuma-az/"
+          class="btn-secondary rounded-none justify-center py-5 border-0 border-t sm:border-t-0 border-sand-line"
+        >
+          Get a Block Wall Quote
+        </a>
+      </div>
+    </div>
+
+    <p class="text-fluid-sm text-white/90 mt-4">
+      Not sure which fits your property?
+      <a
+        href={quoteHref}
+        class="text-white underline decoration-white/50 underline-offset-2 hover:decoration-white"
+      >
+        Tell us about your project
+      </a> and we'll help point you the right direction — or read the full
+      <a
+        href="/guides/fence-vs-block-wall-yuma/"
+        class="text-white underline decoration-white/50 underline-offset-2 hover:decoration-white"
+      >
+        fence vs. block wall guide
+      </a>.
+    </p>
+  </div>
+</section>

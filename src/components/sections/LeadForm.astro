@@ -1,0 +1,63 @@
+---
+// Structure only — GHL webhook wiring, GA4 form_start/form_submit events,
+// and the finalized A2P-ready consent copy all land in Phase 5
+// (references/phase-5-leads-tracking.md + compliance.md rules 2, 9).
+import { site } from "../../lib/site-config";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const { title = "Get a Free Quote", subtitle = "Tell us about your project — no obligation." } = Astro.props;
+---
+
+<div id="lead-form" class="card-rail p-6 sm:p-8">
+  <h2 class="text-fluid-xl">{title}</h2>
+  <p class="mt-1 text-fluid-sm text-muted">{subtitle}</p>
+
+  <form class="mt-6 grid gap-4" data-lead-form aria-label="Free quote request">
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div>
+        <label for="lf-name" class="text-fluid-sm font-medium text-ink">Name</label>
+        <input id="lf-name" name="name" type="text" required class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
+      </div>
+      <div>
+        <label for="lf-phone" class="text-fluid-sm font-medium text-ink">Phone</label>
+        <input id="lf-phone" name="phone" type="tel" required class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
+      </div>
+    </div>
+    <div>
+      <label for="lf-zip" class="text-fluid-sm font-medium text-ink">Zip Code</label>
+      <input id="lf-zip" name="zip" type="text" required class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
+    </div>
+    <div>
+      <label for="lf-project" class="text-fluid-sm font-medium text-ink">Project Type</label>
+      <select id="lf-project" name="project_type" class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5">
+        <option value="fence">Fencing</option>
+        <option value="block-wall">Block Wall / Masonry</option>
+        <option value="both">Both / Not Sure</option>
+        <option value="repair">Repair</option>
+      </select>
+    </div>
+    <div>
+      <label for="lf-details" class="text-fluid-sm font-medium text-ink">Details (optional)</label>
+      <textarea id="lf-details" name="details" rows="3" class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5"></textarea>
+    </div>
+
+    <!-- Consent checkbox — final A2P-ready copy lands in Phase 5. Disclosed
+         but never required to submit, per compliance.md rule 2. -->
+    <label class="flex items-start gap-2 text-fluid-sm text-muted">
+      <input type="checkbox" name="sms_consent" class="mt-1" />
+      <span>
+        I agree to be contacted by {site.brandName} and the independent contractor(s) matched to my
+        project by phone, text, or email about this request. Msg &amp; data rates may apply. Reply
+        STOP to opt out.
+      </span>
+    </label>
+
+    <button type="submit" class="btn-primary justify-center" disabled data-lead-form-submit>
+      Request My Free Quote
+    </button>
+    <p class="text-xs text-muted">Form wiring lands in Phase 5 — currently disabled by design.</p>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+---
+import { site } from "../../lib/site-config";
+
+interface Props {
+  quoteHref?: string;
+}
+const { quoteHref = "/contact/#lead-form" } = Astro.props;
+---
+
+<!-- Mobile sticky bottom bar — phone filled/primary, quote outlined/secondary
+     (v1.17 button-hierarchy rule). Every page must pass a resolving
+     quoteHref (lessons-learned #7). -->
+<div class="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-sand-line bg-white p-3 shadow-lift sm:hidden">
+  {
+    !site.phoneIsPlaceholder && (
+      <a href={site.phoneHref} data-track="phone_click" class="btn-primary flex-1 justify-center">
+        Call Now
+      </a>
+    )
+  }
+  <a
+    href={quoteHref}
+    class={`flex-1 justify-center ${site.phoneIsPlaceholder ? "btn-primary" : "btn-secondary"}`}
+  >
+    Get Free Quote
+  </a>
+</div>
+<!-- Spacer so the fixed bar never overlaps page content -->
+<div class="h-[64px] sm:hidden" aria-hidden="true"></div>

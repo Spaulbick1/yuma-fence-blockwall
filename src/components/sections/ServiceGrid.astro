@@ -1,0 +1,52 @@
+---
+interface ServiceItem {
+  title: string;
+  description: string;
+  href: string;
+}
+interface Props {
+  fenceServices: ServiceItem[];
+  wallServices: ServiceItem[];
+}
+const { fenceServices, wallServices } = Astro.props;
+
+const groups = [
+  { label: "Fencing Services", items: fenceServices, hub: "/services/fence-installation-yuma-az/" },
+  { label: "Block Wall & Masonry Services", items: wallServices, hub: "/services/block-wall-installation-yuma-az/" },
+];
+---
+
+<section class="section bg-white">
+  <div class="container-content">
+    <div class="grid gap-12 lg:grid-cols-2">
+      {
+        groups.map((group) => (
+          <div>
+            <div class="flex items-baseline justify-between gap-4">
+              <h2 class="text-fluid-2xl">{group.label}</h2>
+              <a href={group.hub} class="text-fluid-sm font-semibold text-caliche-dark hover:underline shrink-0">
+                View all →
+              </a>
+            </div>
+            <ul class="mt-6 grid gap-3">
+              {group.items.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="card-rail flex items-center justify-between gap-4 p-4 hover:shadow-lift transition-shadow"
+                  >
+                    <span>
+                      <span class="block font-display font-semibold text-ink">{item.title}</span>
+                      <span class="block text-fluid-sm text-muted">{item.description}</span>
+                    </span>
+                    <span aria-hidden="true" class="text-caliche-dark">→</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
