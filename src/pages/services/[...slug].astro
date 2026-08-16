@@ -1,0 +1,178 @@
+---
+// Core service page template — backs every entry in the `services` content
+// collection (src/content/services/*.md). Handles both cost-verified pages
+// (fence side, real $ figures) and cost-deferred pages (block wall/masonry
+// side, quote-CTA interim per KEYWORD_RESEARCH.md §2 item 2 / NICHE_VALIDATION.md
+// Gate 1 flag) via the `hasVerifiedCost` frontmatter flag — one template,
+// not a fork, so both trades stay visually and structurally consistent.
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import FAQ from "../../components/sections/FAQ.astro";
+import LeadForm from "../../components/sections/LeadForm.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "../../lib/schema";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("services");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const data = entry.data;
+
+const hubHref =
+  data.trade === "fence"
+    ? "/services/fence-installation-yuma-az/"
+    : "/services/block-wall-installation-yuma-az/";
+const hubLabel = data.trade === "fence" ? "Fencing Services" : "Block Wall & Masonry Services";
+---
+
+<BaseLayout
+  title={`${data.title} | ${site.brandName} — Yuma, AZ`}
+  description={data.metaDescription}
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: hubLabel, url: `https://${site.domain}${hubHref}` },
+          { name: data.title, url: `https://${site.domain}${Astro.url.pathname}` },
+        ])
+      )}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        serviceSchema({
+          name: data.title,
+          description: data.metaDescription,
+          url: `https://${site.domain}${Astro.url.pathname}`,
+        })
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(data.faq))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <a href={hubHref} class="hover:text-caliche-dark hover:underline">{hubLabel}</a>
+        <span aria-hidden="true"> / </span>
+        <span>{data.title}</span>
+      </nav>
+
+      <p class="eyebrow">{data.trade === "fence" ? "Fencing" : "Block Wall & Masonry"} — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">{data.title}</h1>
+
+      <!-- Quotable direct-answer block (geo-aeo.md rule 2): figure + geography
+           + date, self-contained, before the table/methodology. -->
+      <p class="mt-5 max-w-2xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        {data.directAnswer}
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div>
+          {
+            data.hasVerifiedCost ? (
+              <div class="card-rail p-6 mb-8">
+                <p class="eyebrow">Typical Cost</p>
+                <p class="mt-2 text-fluid-2xl font-display font-bold text-iron-dark">{data.costRange}</p>
+                <p class="mt-2 text-fluid-sm text-muted">{data.costNote}</p>
+              </div>
+            ) : (
+              <div class="card-rail p-6 mb-8">
+                <p class="eyebrow">Pricing</p>
+                <p class="mt-2 text-fluid-base text-ink">{data.costNote}</p>
+                <a href="#quote" class="btn-primary mt-4">
+                  Request a Free On-Site Quote
+                </a>
+              </div>
+            )
+          }
+
+          <div class="card-rail bg-sand p-5 mb-10 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-fluid-sm text-muted">
+              <span class="font-display font-semibold text-iron-dark">License to ask for: </span>
+              {data.licenseNote}
+            </p>
+            <a href="/guides/fence-masonry-license-arizona/" class="text-fluid-sm font-semibold text-caliche-dark hover:underline shrink-0">
+              Full license guide →
+            </a>
+          </div>
+
+          {
+            data.heroImage && (
+              <img
+                src={data.heroImage}
+                alt={data.heroImageAlt}
+                width="1200"
+                height="800"
+                loading="lazy"
+                class="w-full rounded-card shadow-card mb-10 object-cover"
+              />
+            )
+          }
+
+          <div class="prose-content max-w-none">
+            <Content />
+          </div>
+
+          <FAQ title="Frequently Asked Questions" items={data.faq} />
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm
+            title={`Get a Free ${data.title} Quote`}
+            subtitle="Tell us about your project — no obligation."
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Markdown body typography — headings/lists inside set by Content, kept
+     minimal since main a:not([class]) in global.css already styles links. */
+  .prose-content :global(h2) {
+    @apply text-fluid-2xl mt-10 mb-3;
+  }
+  .prose-content :global(h3) {
+    @apply text-fluid-xl mt-8 mb-2;
+  }
+  .prose-content :global(p) {
+    @apply text-fluid-base text-ink mb-4 leading-relaxed;
+  }
+  .prose-content :global(ul),
+  .prose-content :global(ol) {
+    @apply mb-4 pl-6 text-fluid-base text-ink space-y-1.5;
+  }
+  .prose-content :global(ul) {
+    @apply list-disc;
+  }
+  .prose-content :global(ol) {
+    @apply list-decimal;
+  }
+  .prose-content :global(strong) {
+    @apply font-semibold text-ink;
+  }
+  .prose-content :global(table) {
+    @apply w-full border-collapse mb-6 text-fluid-sm;
+  }
+  .prose-content :global(th),
+  .prose-content :global(td) {
+    @apply border border-sand-line p-2.5 text-left align-top;
+  }
+  .prose-content :global(th) {
+    @apply bg-sand font-display font-semibold;
+  }
+</style>
