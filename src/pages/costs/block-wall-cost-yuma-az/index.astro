@@ -1,0 +1,179 @@
+---
+// Quote-CTA interim per KEYWORD_RESEARCH.md §2 item 2 and Scott's documented
+// decision in COMPETITOR_AGE_CHECK_2026-08-16.md: no $/sq ft table until a
+// real Yuma-sourced figure exists (claude_FACTS_YUMA.md §5 known gap). This
+// page is intentionally structured around cost FACTORS and a free-quote CTA
+// rather than a headline dollar figure or table — do not add one here
+// without first updating claude_FACTS_YUMA.md.
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const faqItems = [
+  {
+    question: "How much does a block wall cost in Yuma, AZ?",
+    answer:
+      "We don't have a verified Yuma-local $/sq ft figure we're willing to publish yet — the one local pricing aggregator we found had an unpopulated Yuma block-wall table, and national averages ($15–$35/sq ft installed) vary too widely by region to be a reliable Yuma estimate. Block wall pricing depends heavily on wall height, total length, footing depth, and block type, so the most accurate number is a free, no-obligation on-site quote.",
+  },
+  {
+    question: "Why won't you just publish a national average?",
+    answer:
+      "Because it could be meaningfully wrong for Yuma specifically, and we'd rather tell you that plainly than publish a number we can't stand behind. Every other cost figure on this site is sourced and dated — see the fence cost guide for what that looks like when we do have a verified local number.",
+  },
+  {
+    question: "Is a block wall more expensive than a fence?",
+    answer:
+      'Generally yes, per linear foot — but a block wall also typically lasts far longer (40+ years vs. 15–30 for most fencing) and is required by City of Yuma code in some locations (canal-adjacent lots, some subdivision perimeters). See the <a href="/guides/fence-vs-block-wall-yuma/">fence vs. block wall guide</a> for the full comparison.',
+  },
+  {
+    question: "Do I need a masonry-licensed contractor for a block wall?",
+    answer:
+      'Usually yes for a structural perimeter or retaining wall — Arizona ROC R-31 (Masonry) is the broader classification that covers concrete block construction, and it\'s required for retaining walls specifically (R-14, the fencing license, excludes them). See the <a href="/guides/fence-masonry-license-arizona/">R-14 vs. R-31 license guide</a>.',
+  },
+];
+---
+
+<BaseLayout
+  title="Block Wall Cost in Yuma, AZ | Yuma Fence & Wall"
+  description="What actually drives block wall and masonry pricing in Yuma, AZ, and why we haven't published a Yuma-specific $/sq ft figure yet. Get a free, accurate on-site quote."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Cost Guides", url: `https://${site.domain}/costs/fence-cost-yuma-az/` },
+          { name: "Block Wall Cost in Yuma, AZ", url: `https://${site.domain}/costs/block-wall-cost-yuma-az/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Block Wall Cost in Yuma, AZ</span>
+      </nav>
+
+      <p class="eyebrow">Cost Guide — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">How Much Does a Block Wall Cost in Yuma, AZ?</h1>
+
+      <p class="mt-5 max-w-3xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, we haven't found a real, Yuma-specific $/sq ft figure for block wall
+        installation that we're confident enough in to publish — every other cost figure on this
+        site is sourced and dated, and this one isn't yet. Here's what actually drives the price,
+        and the fastest way to get an accurate number: a free, no-obligation on-site quote.
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>Why there's no price table on this page</h2>
+          <p>
+            Most cost guides for block wall or masonry work quote a flat national range — commonly
+            somewhere around $15–$35 per square foot installed, according to a few national cost
+            aggregators (HomeGuide, NEDES Estimating, Homewyse). We checked the one local pricing
+            source we could find with a dedicated Yuma page, and its block wall pricing table was
+            unpopulated — no real local number to cite. Publishing that national range as if it were
+            a Yuma figure would be exactly the kind of unsourced claim we're trying to avoid on this
+            site, so we're not doing it. If a verified Yuma-specific figure turns up, this page gets
+            updated with real numbers, dated and sourced like every other cost guide here.
+          </p>
+
+          <h2>What actually drives block wall pricing</h2>
+          <ul>
+            <li>
+              <strong>Wall height and length.</strong> Total square footage (height × length) is the
+              primary driver of both materials and labor on almost any block wall quote.
+            </li>
+            <li>
+              <strong>Footing depth and reinforcement.</strong> Taller walls, walls on a slope, or
+              walls near a property line often need deeper footings and steel reinforcement —
+              engineering requirements, not optional upgrades.
+            </li>
+            <li>
+              <strong>Retaining vs. perimeter wall.</strong> A retaining wall holds back soil and
+              carries real structural/engineering requirements a standard perimeter wall doesn't —
+              Arizona ROC treats it as a distinct scope under the R-31 (Masonry) classification (R-14
+              Fencing explicitly excludes retaining-wall work). See the
+              <a href="/guides/fence-masonry-license-arizona/">R-14 vs. R-31 license guide</a>.
+            </li>
+            <li>
+              <strong>Block type and finish.</strong> Standard CMU (concrete masonry unit) block,
+              split-face decorative block, and stucco or paint finishes all carry different material
+              and labor costs.
+            </li>
+            <li>
+              <strong>Anti-graffiti coating requirement.</strong> City of Yuma code requires
+              subdivision perimeter masonry walls to be sealed with an anti-graffiti coating — a real
+              line item, not optional in that context. See the
+              <a href="/guides/yuma-fence-wall-permit-rules/">permit &amp; code guide</a>.
+            </li>
+            <li>
+              <strong>Caliche soil and excavation.</strong> Like fence post holes, block wall footing
+              excavation through Yuma's caliche hardpan can take longer and need different equipment
+              than digging in softer soil elsewhere.
+            </li>
+            <li>
+              <strong>Access and site conditions.</strong> A backyard wall with limited equipment
+              access, or a wall running along an active canal easement, typically costs more than an
+              open, easily accessible front-yard run.
+            </li>
+          </ul>
+
+          <h2>Block wall vs. a fence — is a wall even what you need?</h2>
+          <p>
+            Some Yuma lots are required by code to use masonry rather than a standard fence in
+            specific locations — canal-adjacent barrier walls and some subdivision perimeters, per
+            City of Yuma Municipal Code § 154-15.06. If you're not sure whether your project needs a
+            wall or a fence, read the <a href="/guides/fence-vs-block-wall-yuma/">full fence vs.
+            block wall comparison</a> before requesting quotes — it'll save you from comparing quotes
+            that aren't actually for the same scope of work.
+          </p>
+
+          <h2>Vetting checklist before you sign</h2>
+          <ul>
+            <li>
+              Confirm the bid is under Arizona ROC R-31 (Masonry) for structural or retaining-wall
+              work — R-14 (Fencing) explicitly excludes retaining walls.
+            </li>
+            <li>
+              Verify the license directly at <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a> —
+              {site.licensedInsuredHedge}.
+            </li>
+            <li>Get height, length, footing depth, block type, and finish spelled out in writing, not just a total dollar figure.</li>
+            <li>Ask whether the quote accounts for caliche excavation and, if applicable, the anti-graffiti coating requirement.</li>
+            <li>If the wall is canal-adjacent, confirm the contractor has coordinated (or will coordinate) with the relevant irrigation/drainage agency per City of Yuma code.</li>
+            <li>Get at least two independent on-site quotes — block wall pricing varies meaningfully by contractor and scope interpretation.</li>
+          </ul>
+
+          <h2>Red flags</h2>
+          <ul>
+            <li>A firm price quoted without the contractor visiting the property.</li>
+            <li>No mention of footing depth or reinforcement on a wall taller than a few feet.</li>
+            <li>A "fencing" contractor bidding retaining-wall work without an R-31 license.</li>
+            <li>Reluctance to provide an Arizona ROC license number, or one that comes back inactive/suspended at roc.az.gov.</li>
+          </ul>
+
+          <p>
+            The fastest way to get a real number for your project:
+            <a href="#quote">request a free, no-obligation on-site quote</a> and get matched with an
+            independent local contractor who can measure your actual wall and price it accurately.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Block Wall Quote" subtitle="Tell us about your project — no obligation." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
