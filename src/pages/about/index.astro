@@ -1,0 +1,116 @@
+---
+// EEAT-heavy per CONTENT_PLAN.md Phase 4 spec: who runs the site, research
+// methodology, what the service is (referral/matching — say so plainly),
+// what it is not. Disclosure renders once here (compliance.md rule 3 —
+// footer, about, terms, and the best-of guide each get exactly one
+// instance). "Guide"/"independent" framing stays low-key here per v1.19 —
+// this page is one of its two sanctioned placements, but still not
+// repeated multiple times on this one page.
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import LeadForm from "../../components/sections/LeadForm.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema } from "../../lib/schema";
+---
+
+<BaseLayout
+  title={`About ${site.brandName} | Fencing & Block Wall Resource for Yuma, AZ`}
+  description="How Yuma Fence & Wall works, what we do and don't do, and the research methodology behind every cost figure and code citation on this site."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "About", url: `https://${site.domain}/about/` },
+        ])
+      )}
+    />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>About</span>
+      </nav>
+
+      <p class="eyebrow">About {site.brandName}</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">A Straightforward Resource for Fencing &amp; Block Wall Projects in Yuma</h1>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>What {site.brandName} is</h2>
+          <p>
+            {site.disclosure} We built this site to bring both trades — fencing and block wall
+            construction — together in one place, because most local companies in Yuma specialize
+            in only one, which leaves homeowners piecing together separate research for what's
+            often a single decision (fence or wall? which license does the job need? what does City
+            of Yuma code actually require on my lot?).
+          </p>
+
+          <h2>What we don't do</h2>
+          <p>
+            We don't install or repair fencing or block walls ourselves, and we don't claim to. We
+            aren't a general contractor, and no one associated with this site performs the physical
+            work described on it. Every project referred through this site is completed by an
+            independent, separately owned and operated business — {site.licensedInsuredHedge}.
+          </p>
+
+          <h2>Our research methodology</h2>
+          <p>
+            Every cost figure, code citation, and licensing fact on this site is sourced and dated,
+            not estimated from general knowledge. Concretely, that means:
+          </p>
+          <ul>
+            <li>
+              Cost ranges (like the ones on the <a href="/costs/fence-cost-yuma-az/">fence cost
+              guide</a>) come from Yuma-specific pricing data where we can find it, cross-referenced
+              against national aggregators — and when we can't find a verified Yuma-local figure, we
+              say so and don't publish a number, rather than presenting a national average as if it
+              were local. The <a href="/costs/block-wall-cost-yuma-az/">block wall cost guide</a> is
+              a live example of that policy in practice.
+            </li>
+            <li>
+              Code and permit information (like the <a href="/guides/yuma-fence-wall-permit-rules/">
+              permit &amp; height rules guide</a>) is cited directly to the actual City of Yuma
+              Municipal Code section, not paraphrased secondhand.
+            </li>
+            <li>
+              Licensing information (like the <a href="/guides/fence-masonry-license-arizona/">
+              R-14 vs. R-31 guide</a>) is sourced directly from the Arizona Registrar of Contractors'
+              own published classification list.
+            </li>
+            <li>
+              Every claim gets a verification date, and we recheck facts periodically rather than
+              publishing them once and leaving them stale — ordinances and pricing both change over
+              time.
+            </li>
+          </ul>
+
+          <h2>How the free quote request works</h2>
+          <p>
+            When you submit a project through this site, we pass your information to an
+            independent, appropriately-licensed local contractor whose scope matches what you
+            described — fence or block wall, repair or new installation. You're never obligated to
+            hire anyone who contacts you, and we encourage you to independently verify any
+            contractor's Arizona ROC license at <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a>
+            before signing a contract, regardless of how you found them.
+          </p>
+
+          <h2>Questions?</h2>
+          <p>
+            See our <a href="/contact/">contact page</a> for the fastest way to reach us, or use the
+            free quote form below to get started on your project.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
