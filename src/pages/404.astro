@@ -1,0 +1,55 @@
+---
+// Astro special-cases src/pages/404.astro to serve as the 404 page.
+// Helpful, links to money pages, noindex per CONTENT_PLAN.md Phase 4 spec.
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import { site } from "../lib/site-config";
+---
+
+<BaseLayout
+  title={`Page Not Found | ${site.brandName}`}
+  description="The page you're looking for doesn't exist. Find fence and block wall resources for Yuma, AZ, or request a free quote."
+  noindex={true}
+  quoteHref="/contact/#lead-form"
+>
+  <section class="section">
+    <div class="container-content max-w-2xl text-center">
+      <p class="eyebrow">404</p>
+      <h1 class="mt-2 text-fluid-3xl">We Couldn't Find That Page</h1>
+      <p class="mt-6 text-fluid-lg text-muted">
+        The page you were looking for may have moved or no longer exists. Here are a few places to
+        pick back up:
+      </p>
+
+      <div class="mt-10 grid gap-3 sm:grid-cols-2 text-left">
+        <a href="/costs/fence-cost-yuma-az/" class="card-rail p-4 hover:shadow-lift transition-shadow">
+          <span class="block font-display font-semibold text-ink">Fence Cost Guide</span>
+          <span class="block text-fluid-sm text-muted">Real Yuma pricing by material</span>
+        </a>
+        <a href="/costs/block-wall-cost-yuma-az/" class="card-rail p-4 hover:shadow-lift transition-shadow">
+          <span class="block font-display font-semibold text-ink">Block Wall Cost Guide</span>
+          <span class="block text-fluid-sm text-muted">What drives block wall pricing</span>
+        </a>
+        <a href="/guides/fence-vs-block-wall-yuma/" class="card-rail p-4 hover:shadow-lift transition-shadow">
+          <span class="block font-display font-semibold text-ink">Fence vs. Block Wall</span>
+          <span class="block text-fluid-sm text-muted">Which one do you actually need?</span>
+        </a>
+        <a href="/guides/yuma-fence-wall-permit-rules/" class="card-rail p-4 hover:shadow-lift transition-shadow">
+          <span class="block font-display font-semibold text-ink">Permit &amp; Code Guide</span>
+          <span class="block text-fluid-sm text-muted">City of Yuma § 154-15.06, explained</span>
+        </a>
+        <a href="/services/fence-installation-yuma-az/" class="card-rail p-4 hover:shadow-lift transition-shadow">
+          <span class="block font-display font-semibold text-ink">Fencing Services</span>
+          <span class="block text-fluid-sm text-muted">Vinyl, chain link, and more</span>
+        </a>
+        <a href="/services/block-wall-installation-yuma-az/" class="card-rail p-4 hover:shadow-lift transition-shadow">
+          <span class="block font-display font-semibold text-ink">Block Wall &amp; Masonry</span>
+          <span class="block text-fluid-sm text-muted">Perimeter and retaining walls</span>
+        </a>
+      </div>
+
+      <p class="mt-10">
+        <a href="/" class="btn-primary">Back to Home</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

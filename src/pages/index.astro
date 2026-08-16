@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../components/layout/BaseLayout.astro";
+import PropertyLineComparison from "../components/sections/PropertyLineComparison.astro";
+import LicenseCheckStrip from "../components/sections/LicenseCheckStrip.astro";
+import ServiceGrid from "../components/sections/ServiceGrid.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import LeadForm from "../components/sections/LeadForm.astro";
+import { site } from "../lib/site-config";
+import { organizationSchema, websiteSchema, faqSchema } from "../lib/schema";
+
+// Only linking to pages that exist and resolve this phase (lessons-learned:
+// every internal href must resolve). The fence/wall hub pages list these
+// same entries via a live content-collection query and will pick up new
+// spokes automatically as they're added in a future content phase — see
+// CONTENT_PLAN.md for the full planned sitemap.
+const fenceServices = [
+  { title: "Vinyl Fence Installation", description: "Privacy, low maintenance, $26–33/linear ft", href: "/services/vinyl-fence-yuma-az/" },
+  { title: "Chain Link Fence", description: "Budget-friendly, durable, $10–13/linear ft", href: "/services/chain-link-fence-yuma-az/" },
+];
+
+const wallServices = [
+  { title: "Perimeter Block Wall", description: "Subdivision code compliance", href: "/services/perimeter-block-wall-yuma-az/" },
+  { title: "Retaining Wall", description: "R-31 masonry scope", href: "/services/retaining-wall-yuma-az/" },
+];
+
+const faqItems = [
+  {
+    question: "Do I need a permit to build a fence or block wall in Yuma?",
+    answer:
+      'Depends on height, material, and location — City of Yuma Municipal Code § 154-15.06 sets specific rules for setbacks, canal-adjacent barrier walls, and subdivision perimeter masonry. See the <a href="/guides/yuma-fence-wall-permit-rules/">full permit &amp; height guide</a>.',
+  },
+  {
+    question: "Should I hire a fencing contractor or a masonry contractor?",
+    answer:
+      'It depends on scope. Arizona ROC license R-14 (Fencing) covers metal, wood, and cement block fencing but excludes retaining walls; R-31 (Masonry) covers the broader structural work. See the <a href="/guides/fence-masonry-license-arizona/">R-14 vs. R-31 license guide</a>.',
+  },
+  {
+    question: "How much does a fence cost in Yuma, AZ?",
+    answer:
+      'As of August 2026, chain link runs roughly $10–13/linear ft, wood privacy $17–24/linear ft, and vinyl $26–33/linear ft installed in the Yuma area. See the <a href="/costs/fence-cost-yuma-az/">full fence cost guide</a> for a breakdown by material.',
+  },
+  {
+    question: "How much does a block wall cost in Yuma, AZ?",
+    answer:
+      "Block wall and masonry pricing depends heavily on height, length, and whether it's a retaining wall or a standard perimeter wall — there isn't yet a verified Yuma-local $/sq ft figure we're willing to publish, so the most accurate next step is a free on-site quote from an independent local contractor.",
+  },
+];
+---
+
+<BaseLayout
+  title={`${site.brandName} | Fencing & Block Wall Contractors — Yuma, AZ`}
+  description="Compare fencing and block wall contractors in Yuma, AZ. Real cost guides, City of Yuma permit rules, and a free-quote request — no obligation."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema())} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <PropertyLineComparison quoteHref="#quote" />
+  <LicenseCheckStrip />
+  <ServiceGrid fenceServices={fenceServices} wallServices={wallServices} />
+
+  <section class="section bg-sand" id="quote">
+    <div class="container-content grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start">
+      <div>
+        <p class="eyebrow">Why This Site</p>
+        <h2 class="mt-2 text-fluid-2xl">One Yuma resource for both fencing and block wall</h2>
+        <p class="mt-4 text-fluid-base text-muted max-w-xl">
+          Most Yuma fencing and masonry companies only do one trade. We built this as a single,
+          straightforward resource covering both — real cost ranges, the City of Yuma code that
+          actually governs your project, and a free quote request that gets you matched with an
+          independent local contractor for whichever job you actually need.
+        </p>
+      </div>
+      <LeadForm />
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
