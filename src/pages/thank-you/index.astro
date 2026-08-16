@@ -1,0 +1,49 @@
+---
+// Sets expectations, noindex, excluded from sitemap (astro.config.mjs
+// filter already excludes any URL containing "/thank-you" — confirmed).
+// No StickyCTA/phone spam here — a visitor who just submitted a form
+// doesn't need another ask immediately.
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import { site } from "../../lib/site-config";
+---
+
+<BaseLayout
+  title={`Thank You | ${site.brandName}`}
+  description="Your fence or block wall quote request has been received."
+  noindex={true}
+  quoteHref="/"
+>
+  <section class="section">
+    <div class="container-content max-w-2xl text-center">
+      <p class="eyebrow">Request Received</p>
+      <h1 class="mt-2 text-fluid-3xl">Thanks — We've Got Your Project Details</h1>
+      <p class="mt-6 text-fluid-lg text-muted">
+        A pre-screened, independent local contractor will reach out about your fence or block wall
+        project — typically within one business day. There's no obligation to hire anyone who
+        contacts you.
+      </p>
+
+      <div class="card-rail mt-10 p-6 sm:p-8 text-left">
+        <h2 class="text-fluid-xl mb-3">While you wait</h2>
+        <ul class="space-y-2 text-fluid-base text-ink">
+          <li>
+            <a href="/guides/fence-masonry-license-arizona/" class="font-medium">Learn how to verify a contractor's Arizona ROC license</a>
+            before your call.
+          </li>
+          <li>
+            <a href="/guides/yuma-fence-wall-permit-rules/" class="font-medium">Check whether your lot has canal-adjacent or subdivision code requirements</a>
+            that affect your project.
+          </li>
+          <li>
+            <a href="/costs/fence-cost-yuma-az/" class="font-medium">Review typical Yuma fence pricing</a>
+            so you know what to expect from a quote.
+          </li>
+        </ul>
+      </div>
+
+      <p class="mt-8">
+        <a href="/" class="btn-secondary">Back to Home</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
