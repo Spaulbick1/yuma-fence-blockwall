@@ -6,6 +6,8 @@ directAnswer: "As of August 2026, fence repair in Yuma, AZ is most often driven 
 hasVerifiedCost: false
 costNote: "Repair cost depends heavily on what actually failed — a leaning post (often a concrete-footing or caliche-erosion issue), a blown-out wood or vinyl panel, a sagging gate, or storm-snapped chain link all carry different labor and material costs. There's no responsible flat number to publish without knowing the specific damage, which is why a free on-site assessment is the accurate next step."
 licenseNote: "Arizona ROC R-14 (Fencing) covers fence repair for the same material types R-14 covers for new installation."
+heroImage: "/images/fence-repair-yuma.webp"
+heroImageAlt: "Contractor using a nail gun to attach wood fence boards during a repair, illustrative photo"
 faq:
   - question: "What usually damages fences in Yuma?"
     answer: "The two most common causes are monsoon-season wind (roughly July–September, with sudden high-wind gusts common during haboob dust storms) and long-term sun/heat exposure, which dries out and warps wood panels and can make plastic/vinyl components brittle over years. Caliche soil shifting around post footings is a less common but real third cause of leaning or loose posts."
