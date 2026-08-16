@@ -1,0 +1,219 @@
+---
+// Core differentiator guide — expands the homepage PropertyLineComparison
+// table into full prose, one section per attribute row. See
+// DESIGN_SYSTEM.md §3: "no competitor site combines both trades, let alone
+// compares them head-to-head." This page is that comparison, in depth.
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const faqItems = [
+  {
+    question: "Is a block wall always better than a fence?",
+    answer:
+      "No — it depends on your priorities. A block wall wins on lifespan, sound/wind blocking, and code compliance in canal-adjacent or some subdivision locations. A fence wins on upfront cost and installation speed. Neither is objectively better across every situation.",
+  },
+  {
+    question: "Can I mix a fence and a block wall on the same property?",
+    answer:
+      "Yes, and it's common in Yuma — for example, a masonry wall along a canal-adjacent rear property line (often required by code) paired with standard fencing along the side and front yards where masonry isn't required.",
+  },
+  {
+    question: "Does my HOA require a block wall instead of a fence?",
+    answer:
+      'Many Yuma-area subdivisions require masonry perimeter fencing sealed with an anti-graffiti coating under City of Yuma Municipal Code § 154-15.06 — check your specific HOA\'s CC&Rs plus the city code before budgeting a fence project. See the <a href="/guides/yuma-fence-wall-permit-rules/">permit &amp; code guide</a>.',
+  },
+  {
+    question: "Which costs less, a fence or a block wall?",
+    answer:
+      'A fence is almost always less expensive upfront — chain link runs $10–$13/linear ft and vinyl $26–$33/linear ft in Yuma, versus a wall that can run well into five figures for a full perimeter. See the <a href="/costs/fence-cost-yuma-az/">fence cost guide</a> and <a href="/costs/block-wall-cost-yuma-az/">block wall cost guide</a> for the full breakdown.',
+  },
+];
+---
+
+<BaseLayout
+  title="Fence vs. Block Wall in Yuma, AZ: Which Should You Choose?"
+  description="A full comparison of fencing vs. block wall for Yuma, AZ properties: cost, privacy, code compliance, maintenance, and lifespan — plus which Arizona ROC license each requires."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Guides", url: `https://${site.domain}/guides/fence-vs-block-wall-yuma/` },
+          { name: "Fence vs. Block Wall in Yuma, AZ", url: `https://${site.domain}/guides/fence-vs-block-wall-yuma/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Fence vs. Block Wall in Yuma, AZ</span>
+      </nav>
+
+      <p class="eyebrow">Comparison Guide — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">Fence vs. Block Wall in Yuma, AZ: Which Should You Choose?</h1>
+
+      <p class="mt-5 max-w-3xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, most Yuma homeowners choosing between a fence and a block wall are
+        deciding on six things: upfront cost, privacy, whether City of Yuma code requires masonry
+        on their lot, maintenance, lifespan, and which Arizona ROC license their contractor needs
+        to hold. Below is the full breakdown of each.
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>The short version</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Attribute</th>
+                <th scope="col">Fencing</th>
+                <th scope="col">Block Wall</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Typical Yuma cost</td>
+                <td>$10–$33/linear ft</td>
+                <td>Request a free quote — no verified Yuma figure yet</td>
+              </tr>
+              <tr>
+                <td>Privacy</td>
+                <td>Good (solid-panel styles)</td>
+                <td>Excellent — fully solid, no gaps</td>
+              </tr>
+              <tr>
+                <td>Yuma code/HOA fit</td>
+                <td>Fits most standard lots</td>
+                <td>Often required — canal-adjacent lots, some subdivisions</td>
+              </tr>
+              <tr>
+                <td>Maintenance</td>
+                <td>Low to moderate (material-dependent)</td>
+                <td>Very low</td>
+              </tr>
+              <tr>
+                <td>Typical lifespan</td>
+                <td>15–30+ years</td>
+                <td>40+ years</td>
+              </tr>
+              <tr>
+                <td>Best for</td>
+                <td>Privacy, pool code compliance, pet containment, curb appeal, budget projects</td>
+                <td>Subdivision perimeter code compliance, sound/wind barriers, retaining walls</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Cost</h2>
+          <p>
+            Fencing wins on upfront cost by a wide margin. Chain link runs roughly $10–$13/linear
+            ft in Yuma, wood privacy $17–$24/linear ft, and vinyl $26–$33/linear ft — see the
+            <a href="/costs/fence-cost-yuma-az/">full fence cost guide</a> for the methodology and
+            a material-by-material breakdown. Block wall construction is meaningfully more
+            expensive per linear foot, largely because of footing/foundation work, block materials,
+            and (for taller or retaining applications) structural reinforcement — we don't have a
+            verified Yuma-specific $/sq ft figure to publish yet, so the most accurate next step for
+            a wall project is a <a href="/costs/block-wall-cost-yuma-az/">free on-site quote</a>.
+          </p>
+
+          <h2>Privacy</h2>
+          <p>
+            A solid vinyl or wood privacy fence panel blocks sightlines about as effectively as a
+            block wall — but a block wall has no seams, gaps, or panel joints that can shift or gap
+            over time, and it doesn't have slats or pickets that can be pried or kicked loose. For
+            pure sightline privacy, either a tall solid fence or a wall works; for durability of that
+            privacy over decades, a wall has the edge.
+          </p>
+
+          <h2>Yuma code and HOA fit</h2>
+          <p>
+            This is where "which one do I want" can turn into "which one am I required to build."
+            City of Yuma Municipal Code § 154-15.06 requires barrier walls adjacent to canals or
+            drainage channels to be solid masonry (with wrought iron allowed as an alternate
+            specifically for drainage-channel frontage) and at least 6 feet tall, and requires
+            subdivision perimeter fencing to be masonry sealed with an anti-graffiti coating. If
+            your lot backs a canal or sits in a subdivision with a masonry requirement, the "fence
+            vs. wall" decision may already be made by code, not preference. See the full
+            <a href="/guides/yuma-fence-wall-permit-rules/">permit &amp; height rules guide</a>
+            before you plan or budget a project — and check your HOA's CC&amp;Rs separately, since
+            an HOA can require masonry even where city code doesn't.
+          </p>
+
+          <h2>Maintenance</h2>
+          <p>
+            Wood fencing needs the most upkeep in Yuma's climate — periodic staining or sealing to
+            handle 4,000+ hours of annual sunshine and summer temperatures that sit at or above
+            100°F on most days from June through September. Vinyl and chain link need very little
+            upkeep beyond occasional cleaning and hardware checks. A block wall needs the least of
+            all — no painting or sealing is required structurally, though a stucco or paint finish
+            (if applied) may need repainting over a long enough timeline.
+          </p>
+
+          <h2>Lifespan</h2>
+          <p>
+            Quality vinyl or wood fencing, properly installed, typically lasts 15–30 years depending
+            on material and maintenance. A block wall, built to code with proper footings, commonly
+            lasts 40+ years with minimal degradation — the main reason it costs more upfront is
+            largely the reason it also lasts longer.
+          </p>
+
+          <h2>Which Arizona ROC license does each need?</h2>
+          <p>
+            Arizona ROC license <strong>R-14 (Fencing)</strong> covers metal, wood, and cement block
+            fencing, automatic gates, and cattle guards — but explicitly excludes retaining-wall
+            installation. <strong>R-31 (Masonry)</strong> is the broader classification covering
+            masonry, brick, concrete block, and stone construction, including structural and
+            retaining walls. A homeowner comparing quotes may get bids from either classification
+            depending on scope — see the <a href="/guides/fence-masonry-license-arizona/">full
+            R-14 vs. R-31 license guide</a> for what to ask for and why it matters.
+          </p>
+
+          <h2>Best for</h2>
+          <ul>
+            <li>
+              <strong>Choose a fence if:</strong> you want the lowest upfront cost, a faster
+              installation timeline, pool-barrier compliance, pet containment, or a look that
+              doesn't require masonry by code.
+            </li>
+            <li>
+              <strong>Choose a block wall if:</strong> your lot is canal-adjacent or inside a
+              subdivision requiring masonry, you want the longest realistic lifespan and lowest
+              long-term maintenance, you need serious sound or wind blocking, or the project
+              includes a retaining element.
+            </li>
+            <li>
+              <strong>Not sure?</strong> Many Yuma properties end up with both — a masonry wall
+              along a canal-adjacent or code-required boundary, and standard fencing everywhere
+              else. A contractor who's walked your property can tell you which portions of your lot
+              line, if any, are actually governed by the masonry requirement.
+            </li>
+          </ul>
+
+          <p>
+            Ready to get quotes for your specific lot?
+            <a href="#quote">Request a free, no-obligation quote</a> and tell us whether you're
+            leaning fence, wall, or aren't sure yet — we'll get you matched with the right kind of
+            independent local contractor either way.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Quote" subtitle="Fence, block wall, or not sure yet — tell us about your project." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
