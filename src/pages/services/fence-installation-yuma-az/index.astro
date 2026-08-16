@@ -1,0 +1,114 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { organizationSchema, breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const allServices = await getCollection("services");
+const fenceEntries = allServices
+  .filter((e) => e.data.trade === "fence")
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const faqItems = [
+  {
+    question: "What fence materials are available in Yuma?",
+    answer:
+      "Chain link, wood privacy, vinyl, wrought iron/ornamental metal, and aluminum are all common in the Yuma area, plus pool-code and commercial/security fencing for specific uses. Cost, privacy level, and maintenance vary significantly by material — see each material's page for a full breakdown.",
+  },
+  {
+    question: "How much does fence installation cost in Yuma, AZ?",
+    answer:
+      "As of August 2026, chain link runs roughly $10–13/linear ft, wood privacy $17–24/linear ft, and vinyl $26–33/linear ft installed. See the full fence cost guide for a complete comparison and methodology.",
+  },
+  {
+    question: "Do I need a permit for a new fence in Yuma?",
+    answer:
+      "It depends on height, material, and location — City of Yuma Municipal Code § 154-15.06 sets rules on setbacks and canal-adjacent barrier requirements. See the permit & height guide for specifics.",
+  },
+];
+---
+
+<BaseLayout
+  title={`Fence Installation in Yuma, AZ | ${site.brandName}`}
+  description="Compare fence types and costs in Yuma, AZ — chain link, wood, vinyl, and more. Get matched with an independent local fence contractor for a free quote."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Fencing Services", url: `https://${site.domain}/services/fence-installation-yuma-az/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8">
+    <div class="container-content">
+      <p class="eyebrow">Fencing — Yuma, AZ</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">Fence Installation in Yuma, AZ</h1>
+      <p class="mt-5 max-w-2xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, fence installation in Yuma, AZ ranges from about $10/linear ft for chain
+        link up to $33/linear ft for vinyl, depending on material — {site.brandName} connects you
+        with an independent local contractor for a free, no-obligation quote on any fence type.
+      </p>
+
+      <div class="mt-10 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div>
+          <h2 class="text-fluid-2xl">Compare fence types</h2>
+          <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+            {
+              fenceEntries.map((entry) => (
+                <li>
+                  <a
+                    href={`/services/${entry.slug}/`}
+                    class="card-rail flex items-center justify-between gap-4 p-4 hover:shadow-lift transition-shadow"
+                  >
+                    <span>
+                      <span class="block font-display font-semibold text-ink">{entry.data.title}</span>
+                      {entry.data.hasVerifiedCost && (
+                        <span class="block text-fluid-sm text-muted">{entry.data.costRange}</span>
+                      )}
+                    </span>
+                    <span aria-hidden="true" class="text-caliche-dark">→</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+
+          <p class="mt-8 text-fluid-base text-muted max-w-2xl">
+            Also install wood privacy, wrought iron/ornamental metal, aluminum, pool-code, and
+            commercial/security fencing in the Yuma area — dedicated pages for each are coming as
+            this site's content library expands. In the meantime, tell us the material and project
+            details in the quote form and we'll match you with an independent local contractor who
+            covers it.
+          </p>
+
+          <div class="mt-10 card-rail bg-sand p-6">
+            <p class="font-display font-semibold uppercase tracking-wide text-iron-dark">Not sure fencing is what you need?</p>
+            <p class="mt-2 text-fluid-base text-muted">
+              Some Yuma properties — especially in subdivisions with a masonry perimeter
+              requirement, or canal-adjacent lots — need a block wall instead of or alongside a
+              fence.
+              <a href="/guides/fence-vs-block-wall-yuma/">Compare fencing vs. block wall</a> or see
+              <a href="/services/block-wall-installation-yuma-az/">block wall & masonry services</a>.
+            </p>
+          </div>
+
+          <FAQ items={faqItems} />
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Fence Quote" subtitle="Tell us about your project — no obligation." />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
