@@ -1,0 +1,78 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import StickyCTA from "../sections/StickyCTA.astro";
+import "../../styles/global.css";
+import { site } from "../../lib/site-config";
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  canonicalPath?: string;
+  /** Every page showing StickyCTA needs a resolving quote target — pages
+   * without an inline form (thank-you, 404, legal) should pass
+   * "/contact/#lead-form" explicitly. (lessons-learned #7) */
+  quoteHref?: string;
+}
+
+const {
+  title,
+  description,
+  noindex = false,
+  canonicalPath = Astro.url.pathname,
+  quoteHref = "/contact/#lead-form",
+} = Astro.props;
+
+const canonicalURL = new URL(canonicalPath, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <slot name="schema" />
+
+    <!-- GA4 — silently no-ops without PUBLIC_GA4_ID (lessons-learned #11) -->
+    {
+      import.meta.env.PUBLIC_GA4_ID && (
+        <>
+          <script
+            is:inline
+            src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA4_ID}`}
+          />
+          <script is:inline define:vars={{ GA4_ID: import.meta.env.PUBLIC_GA4_ID }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", GA4_ID);
+          </script>
+        </>
+      )
+    }
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <StickyCTA quoteHref={quoteHref} />
+  </body>
+</html>
