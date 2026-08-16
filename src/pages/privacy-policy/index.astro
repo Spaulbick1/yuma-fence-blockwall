@@ -1,0 +1,170 @@
+---
+// Real draft flagged for attorney review (compliance.md rule 5). Built to
+// satisfy GHL's Trust Center A2P 10DLC compliance crawler BEFORE Phase 5
+// registration (compliance.md rule 9, v1.5) — SMS opt-in data section,
+// cookie/tracking section, data-security section, user-rights section, and
+// the fulfillment-only "no sharing" carve-out (flagged CRITICAL by GHL's
+// checker). This is real page content the crawler reads directly — not
+// wizard-only text (lessons-learned #3).
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const lastUpdated = "August 16, 2026";
+---
+
+<BaseLayout
+  title={`Privacy Policy | ${site.brandName}`}
+  description={`Privacy policy for ${site.brandName}, including how we handle SMS opt-in data and your contact information.`}
+  quoteHref="/contact/#lead-form"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Privacy Policy", url: `https://${site.domain}/privacy-policy/` },
+        ])
+      )}
+    />
+  </Fragment>
+
+  <section class="section">
+    <div class="container-content max-w-3xl">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Privacy Policy</span>
+      </nav>
+
+      <p class="eyebrow">Legal</p>
+      <h1 class="mt-2 text-fluid-3xl">Privacy Policy</h1>
+      <p class="mt-3 text-fluid-sm text-muted">Last updated: {lastUpdated}</p>
+
+      <div class="card-rail bg-sand p-5 mt-8 mb-8">
+        <p class="text-fluid-sm text-muted">
+          <strong class="text-ink">Draft notice:</strong> this policy is a good-faith working draft
+          and is flagged for review by a licensed Arizona attorney before or within 30 days of this
+          site's public launch, per this business's standard compliance practice. It is not itself
+          legal advice.
+        </p>
+      </div>
+
+      <div class="prose-content max-w-none">
+        <h2>1. Who we are</h2>
+        <p>
+          {site.legalDisclaimerName} ("we," "us," "our") operates {site.domain} (the "Site"), a
+          website that connects Yuma-area homeowners and property owners with independent,
+          third-party fencing and block wall contractors. We do not perform fencing or masonry
+          installation or repair work ourselves.
+        </p>
+
+        <h2>2. Information we collect</h2>
+        <p>When you use the Site, we may collect:</p>
+        <ul>
+          <li><strong>Information you provide directly</strong> — name, phone number, email address, zip code, project details, and any other information you submit through our quote request form.</li>
+          <li><strong>SMS opt-in data</strong> — if you check the SMS consent box on our quote request form, we collect your phone number and the fact and timestamp of your consent, specifically to send you messages about your quote request as described in Section 4 below.</li>
+          <li><strong>Call data</strong> — if you call our tracked phone number, we may collect the number you called from and, where applicable, a recording of the call (see Section 6, Call Recording).</li>
+          <li><strong>Automatically collected data</strong> — standard technical data such as IP address, browser type, device type, pages visited, and referring source, collected via cookies and similar technologies (see Section 3, Cookies &amp; Tracking).</li>
+        </ul>
+
+        <h2>3. Cookies &amp; tracking technologies</h2>
+        <p>
+          We use cookies and similar tracking technologies (including Google Analytics) to
+          understand how visitors use the Site, measure which pages and referral sources drive
+          quote requests, and improve the Site over time. These tools collect aggregate,
+          non-identifying usage data in most cases. You can control or disable cookies through your
+          browser settings; doing so may affect some Site functionality but will not prevent you
+          from submitting a quote request by phone.
+        </p>
+
+        <h2>4. How we use your information — including SMS opt-in data</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Match your quote request to an independent, appropriately-licensed local contractor whose scope fits your project.</li>
+          <li>Contact you by phone, text message, or email about your specific quote request.</li>
+          <li>Send you a status update or follow-up related to your request, if you've consented to SMS contact.</li>
+          <li>Maintain internal records of consent (including the exact consent text and timestamp) as required for TCPA and carrier compliance.</li>
+          <li>Analyze and improve the Site's content and performance.</li>
+        </ul>
+        <p>
+          <strong>SMS message types and frequency:</strong> if you opt in, message frequency may
+          vary based on your quote request and any follow-up needed to connect you with a
+          contractor. Message and data rates may apply. You can opt out at any time by replying
+          STOP, and you can get help by replying HELP. Opting in to SMS is never required to submit
+          a quote request — the checkbox on our form is optional.
+        </p>
+
+        <h2>5. How we share your information — and what we never do with it</h2>
+        <p>
+          <strong>Fulfillment-only sharing.</strong> Your phone number and project details are
+          shared only with the specific independent contractor(s) needed to fulfill your quote
+          request. We do not sell your information, and we do not share your SMS opt-in data or
+          contact information with any third party for their own independent marketing purposes.
+        </p>
+        <p>
+          If your project is later matched to a different provider than the one named at the time
+          you submitted your request, we obtain fresh, provider-specific consent before that
+          provider sends you any automated marketing message — consent for one business does not
+          automatically extend to another.
+        </p>
+        <p>
+          We may also share limited, non-identifying, aggregated usage data with analytics
+          providers (such as Google Analytics) to understand Site performance. We may disclose
+          information if required by law, subpoena, or valid legal process.
+        </p>
+
+        <h2>6. Call recording</h2>
+        <p>
+          Calls to our tracked phone number may be recorded for quality and record-keeping
+          purposes. Arizona is a one-party consent state for call recording (A.R.S. § 13-3005,
+          § 13-3012(9)) — our own consent as a party to the call satisfies Arizona law. If you are
+          calling from a state with different call-recording consent requirements, your call may
+          still be recorded; you may request that recording be disabled by informing us at the
+          start of the call.
+        </p>
+
+        <h2>7. Data security</h2>
+        <p>
+          We use reasonable administrative, technical, and physical safeguards designed to protect
+          the information you provide from unauthorized access, disclosure, alteration, or
+          destruction, including working with reputable third-party platforms (such as our lead
+          management and communications provider) that maintain their own security standards. No
+          method of transmission or storage is 100% secure, and we cannot guarantee absolute
+          security.
+        </p>
+
+        <h2>8. Your rights and choices</h2>
+        <ul>
+          <li><strong>Access and correction.</strong> You may contact us to request a copy of the personal information we hold about you, or to correct inaccurate information.</li>
+          <li><strong>Deletion.</strong> You may request that we delete your personal information, subject to any legal or record-keeping obligations that require us to retain certain data.</li>
+          <li><strong>SMS opt-out.</strong> Reply STOP to any text message from us to opt out of further SMS communication at any time, or contact us directly.</li>
+          <li><strong>Marketing communications.</strong> You may decline SMS consent when submitting a quote request without affecting our ability to process your request by phone or email.</li>
+        </ul>
+        <p>
+          To exercise any of these rights, use the contact information on our <a href="/contact/">Contact page</a>.
+        </p>
+
+        <h2>9. Children's privacy</h2>
+        <p>
+          The Site is not directed at, and we do not knowingly collect personal information from,
+          anyone under the age of 18.
+        </p>
+
+        <h2>10. Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. The "Last updated" date at the top
+          of this page reflects the most recent revision. Material changes affecting how we handle
+          SMS opt-in data will be reflected here before taking effect.
+        </p>
+
+        <h2>11. Contact us</h2>
+        <p>
+          Questions about this Privacy Policy or your information? Reach us via our
+          <a href="/contact/">Contact page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
