@@ -1,0 +1,204 @@
+---
+// AZ-006 R-14 vs R-31 license guide — canonical destination the License
+// Check strip, all 4 service spoke "License to ask for" callouts, and the
+// retaining-wall page already link to. Most-linked unbuilt page going into
+// this phase per CONTENT_PLAN.md §1.
+import BaseLayout from "../../../components/layout/BaseLayout.astro";
+import FAQ from "../../../components/sections/FAQ.astro";
+import LeadForm from "../../../components/sections/LeadForm.astro";
+import { site } from "../../../lib/site-config";
+import { breadcrumbSchema, faqSchema } from "../../../lib/schema";
+
+const faqItems = [
+  {
+    question: "What's the difference between an R-14 and R-31 license in Arizona?",
+    answer:
+      "R-14 (Fencing) covers installing and repairing metal, wood, and cement block fencing, automatic gates, fire access strobes, and cattle guards — but explicitly excludes retaining-wall installation. R-31 (Masonry) is the broader classification: masonry, brick, concrete block, insulating concrete forms, adobe, stone, marble, and slate — including structural and retaining walls.",
+  },
+  {
+    question: "Which license does a block wall around my backyard need?",
+    answer:
+      "A standard perimeter block wall (not retaining soil) commonly falls under R-31 (Masonry), since it's structural concrete-block construction. If any portion of the wall retains soil (holds back a grade change), that portion specifically needs R-31 — R-14 explicitly excludes retaining-wall work.",
+  },
+  {
+    question: "How do I check if a contractor's Arizona license is active?",
+    answer:
+      'Use the Arizona Registrar of Contractors\' free public Contractor Search at <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a> (or directly at azroc.my.site.com/AZRoc/s/contractor-search). Search by business name or license number — it will show whether the license is Active, Suspended, or Inactive, and which classification(s) it covers.',
+  },
+  {
+    question: "Is it illegal to hire an unlicensed contractor in Arizona?",
+    answer:
+      "Arizona law (A.R.S. § 32-1165) makes it a class 1 misdemeanor for a business to advertise that it can perform licensed contracting work without holding the required license — the legal exposure falls primarily on the business doing the advertising/performing the work. As the homeowner, verifying license status protects you from workmanship, warranty, and liability risks that come with hiring an unlicensed operator, even where you aren't the one facing the misdemeanor exposure.",
+  },
+];
+---
+
+<BaseLayout
+  title="R-14 vs. R-31: Which Arizona License Does Your Fence or Wall Contractor Need?"
+  description="Arizona ROC R-14 (Fencing) vs. R-31 (Masonry): what each license actually covers, which one your fence or block wall project needs, and how to verify a contractor's license."
+  quoteHref="#quote"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Guides", url: `https://${site.domain}/guides/fence-masonry-license-arizona/` },
+          { name: "R-14 vs. R-31 License Guide", url: `https://${site.domain}/guides/fence-masonry-license-arizona/` },
+        ])
+      )}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
+  </Fragment>
+
+  <section class="section pb-8 sm:pb-10">
+    <div class="container-content">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>R-14 vs. R-31 License Guide</span>
+      </nav>
+
+      <p class="eyebrow">License Guide — Arizona</p>
+      <h1 class="mt-2 text-fluid-3xl max-w-3xl">R-14 vs. R-31: Which Arizona License Does Your Fence or Wall Contractor Need?</h1>
+
+      <p class="mt-5 max-w-3xl text-fluid-lg font-medium text-ink card-rail bg-sand p-5">
+        As of August 2026, Arizona's Registrar of Contractors uses two separate license
+        classifications for this niche: R-14 (Fencing) — metal, wood, and cement block fencing, but
+        never retaining walls — and R-31 (Masonry), the broader classification that covers
+        structural block, brick, and stone work, including retaining walls. Which one your
+        contractor should hold depends on the job.
+      </p>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+        <div class="prose-content max-w-none">
+          <h2>R-14 (Fencing) — what it covers</h2>
+          <p>
+            Arizona ROC's R-14/C-14/CR-14 "Fencing" classification covers installing and repairing
+            metal, wood, and cement block fencing, automatic gates, fire access strobes, and cattle
+            guards. It's the license a standard fence installer — chain link, wood privacy, vinyl,
+            wrought iron, or a low decorative block fence — should hold.
+          </p>
+          <p>
+            <strong>What it does not cover:</strong> retaining-wall installation. This is explicitly
+            excluded from R-14's scope, regardless of what material the wall is built from.
+          </p>
+
+          <h2>R-31 (Masonry) — what it covers</h2>
+          <p>
+            Arizona ROC's R-31/C-31/CR-31 "Masonry" classification covers installing and repairing
+            masonry, brick, concrete block, insulating concrete forms (ICF), adobe units, stone,
+            marble, and slate. It's the broader of the two classifications, and it's what a
+            structural perimeter block wall or a retaining wall typically falls under.
+          </p>
+
+          <h2>Why the distinction matters for your project</h2>
+          <p>
+            Two Yuma projects that look similar from the street — a low decorative block fence and a
+            taller structural perimeter wall — can require two different licenses. And a wall that
+            retains soil (holds back a grade change on a sloped lot) specifically needs R-31, even
+            if the rest of the project looks like standard fencing work. A contractor who only holds
+            R-14 legally cannot perform retaining-wall work, no matter how experienced they are with
+            fencing generally.
+          </p>
+          <p>
+            This is a genuinely useful thing to ask about before you sign a contract — not to catch
+            anyone out, but because a mismatched license means the work may not be covered the way
+            you'd expect if something goes wrong, and it can create real problems if you ever sell
+            the property and a buyer's inspector or title company asks about permitted work.
+          </p>
+
+          <h2>Quick reference table</h2>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Project type</th>
+                <th scope="col">License needed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Wood, vinyl, or chain-link fence</td>
+                <td>R-14 (Fencing)</td>
+              </tr>
+              <tr>
+                <td>Automatic gate installation</td>
+                <td>R-14 (Fencing)</td>
+              </tr>
+              <tr>
+                <td>Low decorative block fence (non-structural)</td>
+                <td>R-14 (Fencing) — confirm with contractor; borderline cases exist</td>
+              </tr>
+              <tr>
+                <td>Structural perimeter block wall</td>
+                <td>R-31 (Masonry)</td>
+              </tr>
+              <tr>
+                <td>Retaining wall (any material)</td>
+                <td>R-31 (Masonry) — R-14 excludes this scope entirely</td>
+              </tr>
+              <tr>
+                <td>Canal-adjacent solid masonry barrier wall</td>
+                <td>R-31 (Masonry)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>How to verify a contractor's license</h2>
+          <ol>
+            <li>
+              Go to <a href="https://roc.az.gov" target="_blank" rel="noopener">roc.az.gov</a> and
+              use the Contractor Search tool (also reachable directly at
+              azroc.my.site.com/AZRoc/s/contractor-search).
+            </li>
+            <li>Search by the exact business name or license number the contractor gave you.</li>
+            <li>Confirm the license status reads Active, not Suspended or Inactive.</li>
+            <li>Confirm the classification listed (R-14, R-31, or both) actually matches the scope of your project.</li>
+            <li>
+              If you can't find the business under the exact name on their marketing materials, ask
+              them directly for their license number — ROC's search results are tied to the mailing
+              address and legal entity name on file, which doesn't always match a business's public
+              DBA/marketing name.
+            </li>
+          </ol>
+          <p>
+            {site.licensedInsuredHedge}. Neither {site.brandName} nor any contractor we match you
+            with can substitute for you personally confirming license status before signing a
+            contract.
+          </p>
+
+          <h2>Why this is a criminal-law issue in Arizona, not just a best practice</h2>
+          <p>
+            Arizona law (A.R.S. § 32-1165) makes it a class 1 misdemeanor to advertise the ability to
+            perform work regulated by the Registrar of Contractors without holding the required
+            license — this applies regardless of whether the underlying work would otherwise be
+            exempt from licensing. That's a meaningful reason a legitimate local contractor should
+            have no hesitation providing their license number: it's a matter of public record, and
+            avoiding the question is itself a red flag.
+          </p>
+
+          <h2>Red flags</h2>
+          <ul>
+            <li>A contractor who won't provide a license number, or gives a name that doesn't match the license on file.</li>
+            <li>A "fencing" contractor offering to build a retaining wall without holding R-31.</li>
+            <li>A license that comes back Suspended or Inactive at roc.az.gov.</li>
+            <li>Pressure to sign before you've had a chance to verify the license yourself.</li>
+          </ul>
+
+          <p>
+            Ready to get matched with an independent, license-appropriate contractor for your
+            project? <a href="#quote">Request a free, no-obligation quote</a> and tell us whether
+            you're looking at fencing, a block wall, or a retaining wall.
+          </p>
+        </div>
+
+        <div class="lg:sticky lg:top-24" id="quote">
+          <LeadForm title="Get a Free Quote" subtitle="Tell us your project type — we'll match you with the right kind of contractor." />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqItems} />
+</BaseLayout>
