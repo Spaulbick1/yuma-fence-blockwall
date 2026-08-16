@@ -1,0 +1,179 @@
+---
+// Real draft flagged for attorney review (compliance.md rule 5). A2P 10DLC
+// required elements per compliance.md rule 9: SMS program description,
+// opt-out instructions, message/data-rate disclosures, carrier liability
+// disclaimer, 18+ age restriction. Also carries this surface's one instance
+// of the third-party disclosure (rule 3 — footer/about/terms/best-of guide)
+// and the one-to-one TCPA consent architecture (rule 2).
+import BaseLayout from "../../components/layout/BaseLayout.astro";
+import { site } from "../../lib/site-config";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const lastUpdated = "August 16, 2026";
+---
+
+<BaseLayout
+  title={`Terms of Service | ${site.brandName}`}
+  description={`Terms of service for ${site.brandName}, including our SMS messaging program terms.`}
+  quoteHref="/contact/#lead-form"
+>
+  <Fragment slot="schema">
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        breadcrumbSchema([
+          { name: "Home", url: `https://${site.domain}/` },
+          { name: "Terms of Service", url: `https://${site.domain}/terms/` },
+        ])
+      )}
+    />
+  </Fragment>
+
+  <section class="section">
+    <div class="container-content max-w-3xl">
+      <nav aria-label="Breadcrumb" class="text-fluid-sm text-muted mb-4">
+        <a href="/" class="hover:text-caliche-dark hover:underline">Home</a>
+        <span aria-hidden="true"> / </span>
+        <span>Terms of Service</span>
+      </nav>
+
+      <p class="eyebrow">Legal</p>
+      <h1 class="mt-2 text-fluid-3xl">Terms of Service</h1>
+      <p class="mt-3 text-fluid-sm text-muted">Last updated: {lastUpdated}</p>
+
+      <div class="card-rail bg-sand p-5 mt-8 mb-8">
+        <p class="text-fluid-sm text-muted">
+          <strong class="text-ink">Draft notice:</strong> these terms are a good-faith working
+          draft and are flagged for review by a licensed Arizona attorney before or within 30 days
+          of this site's public launch, per this business's standard compliance practice. They are
+          not themselves legal advice.
+        </p>
+      </div>
+
+      <div class="prose-content max-w-none">
+        <h2>1. Acceptance of terms</h2>
+        <p>
+          By using {site.domain} (the "Site"), operated by {site.legalDisclaimerName} ("we," "us,"
+          "our"), you agree to these Terms of Service. If you do not agree, please do not use the
+          Site.
+        </p>
+
+        <h2>2. What this Site is — and isn't</h2>
+        <p>{site.disclosure}</p>
+        <p>
+          We are not a contractor, and we do not perform fencing or block wall installation or
+          repair work. Any statements about pricing, licensing, or code requirements on this Site
+          are provided for general informational purposes and are not a substitute for a
+          contractor's own written quote or a licensed attorney's advice on your specific situation.
+        </p>
+
+        <h2>3. Eligibility — 18+ only</h2>
+        <p>
+          You must be at least 18 years old to submit a quote request or opt in to SMS
+          communications through this Site. By submitting a request, you represent that you are 18
+          or older and have the authority to request services for the property described.
+        </p>
+
+        <h2>4. SMS messaging program terms</h2>
+        <p>
+          <strong>Program description:</strong> if you opt in via the checkbox on our quote request
+          form, {site.legalDisclaimerName} may send you text messages related to your specific
+          quote request — including confirmation, status updates, and messages from the independent
+          contractor(s) matched to your project. This is a transactional messaging program tied to
+          your request, not a general marketing list.
+        </p>
+        <p>
+          <strong>Consent scope (one-to-one):</strong> your SMS consent names the specific
+          business(es) authorized to text you — {site.legalDisclaimerName} and the independent
+          contractor(s) matched to your submitted project. If your project is later referred to a
+          different provider than the one named at submission, we obtain that provider's own
+          consent from you before they send any automated marketing message. Consent is never
+          required to submit a quote request — the SMS checkbox is optional, and unchecking it does
+          not prevent us from processing your request by phone or email.
+        </p>
+        <p>
+          <strong>Message frequency:</strong> may vary based on your request and any follow-up
+          needed to connect you with a contractor.
+        </p>
+        <p>
+          <strong>Message and data rates may apply.</strong> Standard rates from your wireless
+          carrier apply to any messages sent or received.
+        </p>
+        <p>
+          <strong>Opt-out:</strong> reply <strong>STOP</strong> at any time to a message from us to
+          opt out of further SMS communication. You may also contact us directly through our
+          <a href="/contact/">Contact page</a>.
+        </p>
+        <p>
+          <strong>Help:</strong> reply <strong>HELP</strong> to any message for assistance, or
+          contact us through our <a href="/contact/">Contact page</a>.
+        </p>
+        <p>
+          <strong>Carrier liability disclaimer:</strong> carriers are not liable for delayed or
+          undelivered messages. Message delivery is subject to effective transmission from your
+          network operator and depends on factors outside our control, including your device and
+          service coverage.
+        </p>
+        <p>
+          <strong>Supported carriers:</strong> most major U.S. wireless carriers are supported;
+          coverage may vary.
+        </p>
+
+        <h2>5. Call recording</h2>
+        <p>
+          Calls to our tracked phone number may be recorded, consistent with Arizona's one-party
+          consent law (A.R.S. § 13-3005, § 13-3012(9)). See our <a href="/privacy-policy/">Privacy
+          Policy</a> for more detail.
+        </p>
+
+        <h2>6. No guarantee of licensing, insurance, or workmanship</h2>
+        <p>
+          {site.licensedInsuredHedge}. We do our best to match requests to businesses that report
+          appropriate Arizona ROC licensing, but we do not independently verify every contractor's
+          license, insurance, or workmanship on an ongoing basis, and we make no warranty —
+          express or implied — regarding any contractor's work. You are responsible for your own
+          diligence, including verifying license status at roc.az.gov, before hiring anyone.
+        </p>
+
+        <h2>7. No fee to homeowners</h2>
+        <p>
+          Requesting a quote through this Site is free for homeowners and property owners. We do
+          not charge you for matching you with a contractor.
+        </p>
+
+        <h2>8. Limitation of liability</h2>
+        <p>
+          To the fullest extent permitted by law, {site.legalDisclaimerName} is not liable for any
+          damages, disputes, or losses arising from your interactions with, or the work performed
+          by, any independent contractor matched through this Site. Your relationship with any
+          contractor you engage is solely between you and that contractor.
+        </p>
+
+        <h2>9. Intellectual property</h2>
+        <p>
+          The content on this Site — including text, cost guides, and design — is owned by
+          {site.legalDisclaimerName} or its licensors and may not be copied or reproduced without
+          permission, except as needed for your own personal, non-commercial reference.
+        </p>
+
+        <h2>10. Changes to these terms</h2>
+        <p>
+          We may update these Terms from time to time. The "Last updated" date at the top of this
+          page reflects the most recent revision. Continued use of the Site after changes take
+          effect constitutes acceptance of the updated Terms.
+        </p>
+
+        <h2>11. Governing law</h2>
+        <p>
+          These Terms are governed by the laws of the State of Arizona, without regard to its
+          conflict-of-law principles.
+        </p>
+
+        <h2>12. Contact us</h2>
+        <p>
+          Questions about these Terms? Reach us via our <a href="/contact/">Contact page</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
