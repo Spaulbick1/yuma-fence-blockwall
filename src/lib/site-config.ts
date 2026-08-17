@@ -19,12 +19,15 @@ export const site = {
   },
 
   // --- Phone / call tracking (Phase 5) ---
-  // GHL tracked number not yet provisioned. Every component must key off
+  // GHL tracked number provisioned 2026-08-17: +1 928-597-4928, wired in the
+  // shared "St George" GHL sub-account (forwards to 702-538-3637, whisper
+  // "Lead from Yuma Fence & Wall website", call recording enabled per AZ
+  // one-party-consent disclosure). Every component keys off
   // `phoneIsPlaceholder` — when true, hide/disable Call CTAs rather than
   // show a fake number (same pattern as every other site in the portfolio).
-  phoneIsPlaceholder: true,
-  phoneDisplay: "(928) 555-0100",
-  phoneHref: "tel:+19285550100",
+  phoneIsPlaceholder: false,
+  phoneDisplay: "(928) 597-4928",
+  phoneHref: "tel:+19285974928",
 
   // --- Lead form (Phase 5) ---
   webhookUrl: "",
