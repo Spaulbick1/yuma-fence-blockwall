@@ -44,14 +44,19 @@ const { title = "Get a Free Quote", subtitle = "Tell us about your project — n
       <textarea id="lf-details" name="details" rows="3" class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5"></textarea>
     </div>
 
-    <!-- Consent checkbox — final A2P-ready copy lands in Phase 5. Disclosed
-         but never required to submit, per compliance.md rule 2. -->
+    <!-- Consent checkbox — A2P 10DLC-ready copy per compliance.md rule 9's full
+         checklist: business name matching the A2P registration (AuthenitcBrand,
+         LLC, dba {site.brandName}), message type, frequency, rate disclosure,
+         HELP/STOP. Disclosed but never required to submit, per compliance.md
+         rule 2. -->
     <label class="flex items-start gap-2 text-fluid-sm text-muted">
       <input type="checkbox" name="sms_consent" class="mt-1" />
       <span>
-        I agree to be contacted by {site.brandName} and the independent contractor(s) matched to my
-        project by phone, text, or email about this request. Msg &amp; data rates may apply. Reply
-        STOP to opt out.
+        I agree to receive customer care text messages about my quote request from AuthenitcBrand,
+        LLC (dba {site.brandName}) and the independent contractor(s) matched to my project, by
+        phone, text, or email. Message type: customer care / transactional. Message frequency
+        varies. Message and data rates may apply. Reply HELP for help. Reply STOP to opt out.
+        Consent is not a condition of purchase, and checking this box is optional.
       </span>
     </label>
 
