@@ -51,7 +51,7 @@
 
   /* ---- Button hierarchy (v1.17): phone = filled/primary, quote = outlined/secondary ---- */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-card px-5 py-3 text-fluid-base font-display font-semibold uppercase tracking-wide transition-colors;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-card px-3.5 py-3 text-fluid-base font-display font-semibold uppercase tracking-wide transition-colors;
   }
   .btn-primary,
   .btn-filled {
