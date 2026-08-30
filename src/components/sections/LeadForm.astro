@@ -1,7 +1,8 @@
 ---
-// Structure only — GHL webhook wiring, GA4 form_start/form_submit events,
-// and the finalized A2P-ready consent copy all land in Phase 5
-// (references/phase-5-leads-tracking.md + compliance.md rules 2, 9).
+// Phase 5: form POST + GA4 wiring live (references/phase-5-leads-tracking.md
+// + compliance.md rules 2, 9). Silently-degrading pattern mirrors GA4
+// lesson #11: if PUBLIC_GHL_WEBHOOK_URL is unset, the form fails loudly ON
+// PAGE (not a dead POST) rather than pretending to work.
 import { site } from "../../lib/site-config";
 
 interface Props {
@@ -15,20 +16,26 @@ const { title = "Get a Free Quote", subtitle = "Tell us about your project — n
   <h2 class="text-fluid-xl">{title}</h2>
   <p class="mt-1 text-fluid-sm text-muted">{subtitle}</p>
 
-  <form class="mt-6 grid gap-4" data-lead-form aria-label="Free quote request">
+  <form class="mt-6 grid gap-4" data-lead-form data-webhook-url={site.webhookUrl} aria-label="Free quote request">
+    <!-- Honeypot — hidden from real users, screened client-side before POST. -->
+    <div class="hidden" aria-hidden="true">
+      <label for="lf-company">Leave blank</label>
+      <input type="text" id="lf-company" name="company_website" tabindex="-1" autocomplete="off" />
+    </div>
+
     <div class="grid gap-4 sm:grid-cols-2">
       <div>
         <label for="lf-name" class="text-fluid-sm font-medium text-ink">Name</label>
-        <input id="lf-name" name="name" type="text" required class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
+        <input id="lf-name" name="name" type="text" required autocomplete="name" class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
       </div>
       <div>
         <label for="lf-phone" class="text-fluid-sm font-medium text-ink">Phone</label>
-        <input id="lf-phone" name="phone" type="tel" required class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
+        <input id="lf-phone" name="phone" type="tel" required autocomplete="tel" class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
       </div>
     </div>
     <div>
       <label for="lf-zip" class="text-fluid-sm font-medium text-ink">Zip Code</label>
-      <input id="lf-zip" name="zip" type="text" required class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
+      <input id="lf-zip" name="zip" type="text" required autocomplete="postal-code" class="mt-1 w-full rounded-card border border-sand-line px-3 py-2.5" />
     </div>
     <div>
       <label for="lf-project" class="text-fluid-sm font-medium text-ink">Project Type</label>
@@ -50,8 +57,8 @@ const { title = "Get a Free Quote", subtitle = "Tell us about your project — n
          HELP/STOP. Disclosed but never required to submit, per compliance.md
          rule 2. -->
     <label class="flex items-start gap-2 text-fluid-sm text-muted">
-      <input type="checkbox" name="sms_consent" class="mt-1" />
-      <span>
+      <input type="checkbox" id="lf-consent" name="sms_consent" class="mt-1" />
+      <span id="lf-consent-text">
         I agree to receive customer care text messages about my quote request from AuthenitcBrand,
         LLC (dba {site.brandName}) and the independent contractor(s) matched to my project, by
         phone, text, or email. Message type: customer care / transactional. Message frequency
@@ -60,9 +67,120 @@ const { title = "Get a Free Quote", subtitle = "Tell us about your project — n
       </span>
     </label>
 
-    <button type="submit" class="btn-primary justify-center" disabled data-lead-form-submit>
+    <!-- Hidden fields logged with every submission (compliance #2). -->
+    <input type="hidden" name="consent_timestamp" value="" data-fill="timestamp" />
+    <input type="hidden" name="page_url" value="" data-fill="page-url" />
+    <input type="hidden" name="source" value="website-lead-form" />
+
+    <button type="submit" class="btn-primary justify-center" data-lead-form-submit>
       Request My Free Quote
     </button>
-    <p class="text-xs text-muted">Form wiring lands in Phase 5 — currently disabled by design.</p>
+    <p role="status" aria-live="polite" class="text-fluid-sm text-muted" id="lf-status"></p>
   </form>
 </div>
+
+<script>
+  // Phase 5: real GHL webhook POST + GA4 form_start/form_submit events.
+  // Mirrors the pattern used across the portfolio (e.g. Pahrump Electrician's
+  // LeadForm.astro) so every site degrades the same way when the webhook
+  // isn't wired yet.
+  const form = document.querySelector('[data-lead-form]') as HTMLFormElement | null;
+
+  function track(eventName: string) {
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+    if (typeof w.gtag === 'function') w.gtag('event', eventName);
+  }
+
+  function getUtmParams(): Record<string, string> {
+    const params = new URLSearchParams(window.location.search);
+    const utm: Record<string, string> = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach((key) => {
+      const val = params.get(key);
+      if (val) utm[key] = val;
+    });
+    return utm;
+  }
+
+  if (form) {
+    const pageUrlField = form.querySelector('[data-fill="page-url"]');
+    if (pageUrlField) (pageUrlField as HTMLInputElement).value = window.location.href;
+
+    // form_start: fires once, on the first field focus/interaction.
+    let started = false;
+    form.addEventListener('focusin', () => {
+      if (!started) {
+        started = true;
+        track('form_start');
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('lf-status');
+      const webhookUrl = form.dataset.webhookUrl || '';
+
+      const tsField = form.querySelector('[data-fill="timestamp"]');
+      const timestamp = new Date().toISOString();
+      if (tsField) (tsField as HTMLInputElement).value = timestamp;
+
+      if (!webhookUrl) {
+        // No live webhook configured yet (PUBLIC_GHL_WEBHOOK_URL unset) —
+        // fail loudly ON PAGE (not silently) so a misconfigured deploy is
+        // obvious to whoever tests the form, without throwing a console-only error.
+        if (status) {
+          status.textContent =
+            'This form is not yet connected to a live intake system. Please call us instead — no data was sent.';
+        }
+        return;
+      }
+
+      const data = new FormData(form);
+      if (data.get('company_website')) return; // honeypot tripped — silently drop
+
+      const consentTextEl = document.getElementById('lf-consent-text');
+      const payload = {
+        lead_id: crypto.randomUUID(),
+        timestamp,
+        type: 'form',
+        project_type: data.get('project_type') || '',
+        zip: data.get('zip') || '',
+        contact: {
+          name: data.get('name') || '',
+          phone: data.get('phone') || '',
+        },
+        message: data.get('details') || '',
+        source_page: window.location.pathname,
+        utm: getUtmParams(),
+        consent: {
+          given: data.get('sms_consent') === 'on',
+          text: consentTextEl?.textContent?.trim() || '',
+          ts: timestamp,
+        },
+      };
+
+      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      if (submitButton) submitButton.disabled = true;
+      if (status) status.textContent = 'Sending your request…';
+
+      try {
+        const res = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error(`Webhook responded ${res.status}`);
+
+        track('form_submit');
+        window.location.href = '/thank-you/';
+      } catch (err) {
+        if (status) {
+          status.textContent =
+            "Something went wrong sending your request — please call us directly so we don't lose your lead.";
+        }
+        if (submitButton) submitButton.disabled = false;
+        console.error('Lead form submission failed', err);
+      }
+    });
+  }
+</script>

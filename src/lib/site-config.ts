@@ -30,7 +30,12 @@ export const site = {
   phoneHref: "tel:+19285974928",
 
   // --- Lead form (Phase 5) ---
-  webhookUrl: "",
+  // Reads from the Cloudflare Pages env var so the real webhook URL never
+  // has to be hand-edited into source and re-committed (same pattern as
+  // phoneDisplay/phoneHref above and every other site in the portfolio).
+  // Empty until the GHL "Lead Intake — Yuma Fence & Wall" workflow exists —
+  // LeadForm.astro fails loudly on-page (not a dead POST) while unset.
+  webhookUrl: import.meta.env.PUBLIC_GHL_WEBHOOK_URL ?? "",
 
   // --- Compliance (compliance.md rules 3, 4, 6) ---
   // AZ-002: A.R.S. § 32-1165 makes advertising licensed trade work without a
