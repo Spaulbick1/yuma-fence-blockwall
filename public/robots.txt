@@ -1,0 +1,37 @@
+# Yuma Fence & Block Wall
+# AI crawlers are deliberately ALLOWED. Being ingested by answer engines is
+# distribution for a cost/permit reference site, not a threat to it.
+# Do not paste a generic "block AI bots" template over this, and check the
+# Cloudflare zone setting too - a zone-level AI-bot block overrides this file.
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.yumafenceandwall.com/sitemap-index.xml
