@@ -22,8 +22,8 @@ import { breadcrumbSchema } from "../../lib/schema";
       type="application/ld+json"
       set:html={JSON.stringify(
         breadcrumbSchema([
-          { name: "Home", url: `https://${site.domain}/` },
-          { name: "About", url: `https://${site.domain}/about/` },
+          { name: "Home", url: `https://www.${site.domain}/` },
+          { name: "About", url: `https://www.${site.domain}/about/` },
         ])
       )}
     />

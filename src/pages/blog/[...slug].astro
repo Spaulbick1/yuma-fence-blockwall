@@ -34,9 +34,9 @@ const data = entry.data;
       type="application/ld+json"
       set:html={JSON.stringify(
         breadcrumbSchema([
-          { name: "Home", url: `https://${site.domain}/` },
-          { name: "Blog", url: `https://${site.domain}/blog/` },
-          { name: data.title, url: `https://${site.domain}${Astro.url.pathname}` },
+          { name: "Home", url: `https://www.${site.domain}/` },
+          { name: "Blog", url: `https://www.${site.domain}/blog/` },
+          { name: data.title, url: `https://www.${site.domain}${Astro.url.pathname}` },
         ])
       )}
     />

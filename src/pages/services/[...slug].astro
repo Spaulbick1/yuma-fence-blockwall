@@ -41,9 +41,9 @@ const hubLabel = data.trade === "fence" ? "Fencing Services" : "Block Wall & Mas
       type="application/ld+json"
       set:html={JSON.stringify(
         breadcrumbSchema([
-          { name: "Home", url: `https://${site.domain}/` },
-          { name: hubLabel, url: `https://${site.domain}${hubHref}` },
-          { name: data.title, url: `https://${site.domain}${Astro.url.pathname}` },
+          { name: "Home", url: `https://www.${site.domain}/` },
+          { name: hubLabel, url: `https://www.${site.domain}${hubHref}` },
+          { name: data.title, url: `https://www.${site.domain}${Astro.url.pathname}` },
         ])
       )}
     />
@@ -53,7 +53,7 @@ const hubLabel = data.trade === "fence" ? "Fencing Services" : "Block Wall & Mas
         serviceSchema({
           name: data.title,
           description: data.metaDescription,
-          url: `https://${site.domain}${Astro.url.pathname}`,
+          url: `https://www.${site.domain}${Astro.url.pathname}`,
         })
       )}
     />

@@ -26,8 +26,8 @@ const allPosts = (await getCollection("posts")).sort(
       type="application/ld+json"
       set:html={JSON.stringify(
         breadcrumbSchema([
-          { name: "Home", url: `https://${site.domain}/` },
-          { name: "Blog", url: `https://${site.domain}/blog/` },
+          { name: "Home", url: `https://www.${site.domain}/` },
+          { name: "Blog", url: `https://www.${site.domain}/blog/` },
         ])
       )}
     />

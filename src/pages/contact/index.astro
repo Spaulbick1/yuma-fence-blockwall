@@ -19,8 +19,8 @@ import { breadcrumbSchema } from "../../lib/schema";
       type="application/ld+json"
       set:html={JSON.stringify(
         breadcrumbSchema([
-          { name: "Home", url: `https://${site.domain}/` },
-          { name: "Contact", url: `https://${site.domain}/contact/` },
+          { name: "Home", url: `https://www.${site.domain}/` },
+          { name: "Contact", url: `https://www.${site.domain}/contact/` },
         ])
       )}
     />

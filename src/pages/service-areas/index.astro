@@ -19,8 +19,8 @@ const sorted = allLocations.sort((a, b) => a.data.cityName.localeCompare(b.data.
       type="application/ld+json"
       set:html={JSON.stringify(
         breadcrumbSchema([
-          { name: "Home", url: `https://${site.domain}/` },
-          { name: "Service Areas", url: `https://${site.domain}/service-areas/` },
+          { name: "Home", url: `https://www.${site.domain}/` },
+          { name: "Service Areas", url: `https://www.${site.domain}/service-areas/` },
         ])
       )}
     />
