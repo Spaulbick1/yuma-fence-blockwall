@@ -25,7 +25,7 @@ const data = entry.data;
 ---
 
 <BaseLayout
-  title={`${data.title} | ${site.brandName} Blog`}
+  title={`${data.seoTitle ?? data.title} | ${site.brandName} Blog`}
   description={data.metaDescription}
   quoteHref="#quote"
 >

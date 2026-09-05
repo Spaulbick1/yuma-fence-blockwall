@@ -1,5 +1,6 @@
 ---
 title: "Retaining Wall Installation in Yuma, AZ"
+seoTitle: "Retaining Wall in Yuma, AZ"
 trade: "wall"
 metaDescription: "Retaining wall installation in Yuma, AZ — why this scope requires an R-31 masonry license (not R-14 fencing), plus what drives cost and how to vet a contractor."
 directAnswer: "Retaining wall installation in Yuma, AZ falls under Arizona ROC's R-31 (Masonry) license classification, not R-14 (Fencing) — a distinction that matters because R-14 explicitly excludes retaining-wall work, and pricing depends heavily on wall height, soil load, and drainage design, which is why we recommend a free on-site quote rather than a flat estimate."

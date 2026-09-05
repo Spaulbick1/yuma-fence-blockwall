@@ -1,5 +1,6 @@
 ---
 title: "Wrought Iron & Ornamental Fence Installation in Yuma, AZ"
+seoTitle: "Wrought Iron Fencing in Yuma, AZ"
 trade: "fence"
 metaDescription: "Wrought iron and ornamental aluminum fence options for Yuma, AZ — cost factors, pool-barrier fit, climate durability, and how to vet a contractor."
 directAnswer: "Wrought iron and ornamental aluminum fencing give Yuma properties an open, view-preserving perimeter, with no verified Yuma-local per-foot price published yet as of September 2026 — request a free on-site quote to compare wrought iron against aluminum for your specific project."

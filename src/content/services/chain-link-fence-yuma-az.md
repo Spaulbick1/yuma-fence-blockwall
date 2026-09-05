@@ -1,5 +1,6 @@
 ---
 title: "Chain Link Fence Installation in Yuma, AZ"
+seoTitle: "Chain Link Fence in Yuma, AZ"
 trade: "fence"
 metaDescription: "Chain link fence installation in Yuma, AZ typically runs $10–13 per linear foot — the most budget-friendly option. Cost factors, uses, and vetting tips."
 directAnswer: "As of August 2026, chain link fence installation in Yuma, AZ typically costs $10–$13 per linear foot installed, making it the most budget-friendly fencing option in the area — a 150-linear-foot perimeter typically runs $1,500–$1,950."

@@ -8,6 +8,12 @@ const services = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    // Optional shorter override for the rendered <title> tag only (search-result/
+    // browser-tab text) — falls back to `title` when unset. On-page H1 always
+    // renders `title` in full; this exists so a long, descriptive on-page title
+    // doesn't force the <title> tag over the ~58-char guideline once the brand
+    // suffix is appended (2026-09-05 title-length fix).
+    seoTitle: z.string().optional(),
     trade: z.enum(["fence", "wall"]),
     metaDescription: z.string().max(160),
     // Quotable direct-answer block (geo-aeo.md rule 2): figure + geography +
@@ -56,6 +62,9 @@ const posts = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    // Same optional <title>-tag-only override as the services collection —
+    // see that field's comment above (2026-09-05 title-length fix).
+    seoTitle: z.string().optional(),
     metaDescription: z.string().max(160),
     // Quotable direct-answer block (geo-aeo.md rule 2): figure/claim +
     // geography + date, 1-2 sentences, rendered before any other body content.

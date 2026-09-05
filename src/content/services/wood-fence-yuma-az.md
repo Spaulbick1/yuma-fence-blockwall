@@ -1,5 +1,6 @@
 ---
 title: "Wood Privacy Fence Installation in Yuma, AZ"
+seoTitle: "Wood Privacy Fence in Yuma, AZ"
 trade: "fence"
 metaDescription: "Wood privacy fence installation in Yuma, AZ typically runs $17–$24 per linear foot. Cost factors, desert-specific maintenance, and how to vet a contractor."
 directAnswer: "As of September 2026, wood privacy fence installation in Yuma, AZ typically costs $17–$24 per linear foot installed, making a standard 150-linear-foot residential perimeter roughly $2,550–$3,600."

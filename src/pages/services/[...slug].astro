@@ -32,7 +32,7 @@ const hubLabel = data.trade === "fence" ? "Fencing Services" : "Block Wall & Mas
 ---
 
 <BaseLayout
-  title={`${data.title} | ${site.brandName} — Yuma, AZ`}
+  title={`${data.seoTitle ?? data.title} | ${site.brandName}`}
   description={data.metaDescription}
   quoteHref="#quote"
 >

@@ -1,5 +1,6 @@
 ---
 title: "Monsoon Wind Damage: Yuma Fence & Wall Repair Guide"
+seoTitle: "Monsoon Wind Fence Damage Guide"
 metaDescription: "What Arizona's monsoon season (roughly July–September) does to Yuma fences and block walls, how to inspect for damage, and what to do before and after a storm."
 directAnswer: "As of August 2026, Arizona's monsoon season — roughly July through September, with sudden high-wind gusts and occasional haboob dust storms — is the single most common cause of fence and block wall damage in Yuma, and most storm damage is repairable if it's caught and assessed before the next storm compounds it."
 excerpt: "Monsoon season is the leading cause of fence and wall damage in Yuma. Here's what to inspect, what typically fails, and how to get ahead of the next storm."

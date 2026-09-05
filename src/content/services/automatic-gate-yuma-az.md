@@ -1,5 +1,6 @@
 ---
 title: "Automatic & Electric Gate Installation in Yuma, AZ"
+seoTitle: "Automatic Gates in Yuma, AZ"
 trade: "fence"
 metaDescription: "Automatic and electric driveway gate installation in Yuma, AZ — swing vs. slide, cost factors, desert-climate considerations, and how to vet a contractor."
 directAnswer: "Automatic and electric gate installation in Yuma, AZ falls under the same Arizona ROC fencing license classification as manual gates, with no verified Yuma-local price published yet as of September 2026 — request a free on-site quote based on your gate's width, operator type, and power run."

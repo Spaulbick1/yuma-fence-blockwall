@@ -1,5 +1,6 @@
 ---
 title: "Caliche Soil & Block Wall Footings in Yuma, AZ"
+seoTitle: "Caliche Soil & Wall Footings"
 metaDescription: "How caliche hardpan affects block wall and fence footing work in Yuma, AZ, and what to ask a contractor about excavation and footing depth."
 directAnswer: "As of August 2026, much of the Yuma area sits on caliche — a naturally cemented, calcium-carbonate hardpan common across the Sonoran Desert — which slows footing and post-hole excavation and, if not properly accounted for, can affect the long-term stability of a fence post or block wall footing."
 excerpt: "Caliche hardpan is one of the most Yuma-specific factors in any fence or block wall project. Here's what it is, why it matters, and what to ask a contractor about it."

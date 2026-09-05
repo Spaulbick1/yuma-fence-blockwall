@@ -1,5 +1,6 @@
 ---
 title: "HOA Fence & Wall Rules in Yuma, AZ: A Homeowner's Guide"
+seoTitle: "HOA Fence & Wall Rules in Yuma"
 metaDescription: "How HOA fence and wall rules interact with City of Yuma code, and why your subdivision's CC&Rs can require more than the city minimum."
 directAnswer: "As of August 2026, many Yuma-area subdivisions — especially newer, master-planned communities — layer their own HOA fencing and wall requirements on top of City of Yuma Municipal Code § 154-15.06, and an HOA's CC&Rs can require masonry, specific colors, or additional setbacks beyond what city code alone requires, so checking both is a genuinely necessary step before budgeting a project."
 excerpt: "Your HOA can require more than City of Yuma code does. Here's how the two interact, what to check in your CC&Rs, and how to avoid budgeting a project that doesn't actually meet requirements."

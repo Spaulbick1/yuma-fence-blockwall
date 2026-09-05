@@ -1,5 +1,6 @@
 ---
 title: "Snowbird Season Fence & Wall Checklist — Yuma, AZ"
+seoTitle: "Snowbird Season Fence Checklist"
 metaDescription: "A pre-season fence and block wall checklist for Yuma homeowners and property managers ahead of snowbird season, roughly October through April."
 directAnswer: "As of August 2026, Yuma's population roughly doubles every winter as seasonal 'snowbird' visitors arrive — commonly cited at roughly 90,000 seasonal residents on top of a year-round county population of about 213,787 — making early fall, before the October–April season ramps up, the practical window to handle any fence or block wall repairs and checks around a property."
 excerpt: "Yuma's population roughly doubles every winter. If you manage a property here, early fall is the practical window to get fence and wall repairs handled before the season ramps up."

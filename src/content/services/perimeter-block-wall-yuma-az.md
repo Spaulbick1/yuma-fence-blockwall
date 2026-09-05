@@ -1,5 +1,6 @@
 ---
 title: "Perimeter Block Wall Installation in Yuma, AZ"
+seoTitle: "Perimeter Block Wall in Yuma, AZ"
 trade: "wall"
 metaDescription: "Perimeter block wall installation in Yuma, AZ — City of Yuma code requirements, cost factors, and what to ask before you hire a masonry contractor."
 directAnswer: "As of August 2026, we don't have a verified Yuma-local $/sq ft figure for perimeter block wall installation we're willing to publish — pricing depends heavily on height, length, and site conditions, so the most accurate number comes from a free on-site quote."
