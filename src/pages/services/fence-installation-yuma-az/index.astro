@@ -4,7 +4,7 @@ import BaseLayout from "../../../components/layout/BaseLayout.astro";
 import FAQ from "../../../components/sections/FAQ.astro";
 import LeadForm from "../../../components/sections/LeadForm.astro";
 import { site } from "../../../lib/site-config";
-import { organizationSchema, breadcrumbSchema, faqSchema } from "../../../lib/schema";
+import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from "../../../lib/schema";
 
 const allServices = await getCollection("services");
 const fenceEntries = allServices
@@ -46,6 +46,16 @@ const faqItems = [
         ])
       )}
     />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        serviceSchema({
+          name: "Fence Installation in Yuma, AZ",
+          description: "Fence installation and material comparison services connecting Yuma-area homeowners with independent local fencing contractors.",
+          url: `https://www.${site.domain}/services/fence-installation-yuma-az/`,
+        })
+      )}
+    />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />
   </Fragment>
 
@@ -84,11 +94,11 @@ const faqItems = [
           </ul>
 
           <p class="mt-8 text-fluid-base text-muted max-w-2xl">
-            Also install wood privacy, wrought iron/ornamental metal, aluminum, pool-code, and
-            commercial/security fencing in the Yuma area — dedicated pages for each are coming as
-            this site's content library expands. In the meantime, tell us the material and project
-            details in the quote form and we'll match you with an independent local contractor who
-            covers it.
+            Also cover <a href="/services/automatic-gate-yuma-az/">automatic &amp; electric gate
+            installation</a>, plus aluminum and commercial/security fencing, in the Yuma area —
+            dedicated pages for the latter two are coming as this site's content library expands.
+            In the meantime, tell us the material and project details in the quote form and we'll
+            match you with an independent local contractor who covers it.
           </p>
 
           <div class="mt-10 card-rail bg-sand p-6">

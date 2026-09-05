@@ -4,7 +4,7 @@ import BaseLayout from "../../../components/layout/BaseLayout.astro";
 import FAQ from "../../../components/sections/FAQ.astro";
 import LeadForm from "../../../components/sections/LeadForm.astro";
 import { site } from "../../../lib/site-config";
-import { organizationSchema, breadcrumbSchema, faqSchema } from "../../../lib/schema";
+import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from "../../../lib/schema";
 
 const allServices = await getCollection("services");
 const wallEntries = allServices
@@ -44,6 +44,16 @@ const faqItems = [
           { name: "Home", url: `https://www.${site.domain}/` },
           { name: "Block Wall & Masonry Services", url: `https://www.${site.domain}/services/block-wall-installation-yuma-az/` },
         ])
+      )}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(
+        serviceSchema({
+          name: "Block Wall & Masonry Installation in Yuma, AZ",
+          description: "Perimeter block wall, retaining wall, and masonry installation services connecting Yuma-area homeowners with independent local masonry contractors.",
+          url: `https://www.${site.domain}/services/block-wall-installation-yuma-az/`,
+        })
       )}
     />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />

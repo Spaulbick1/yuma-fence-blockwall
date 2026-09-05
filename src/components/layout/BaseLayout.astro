@@ -14,6 +14,10 @@ interface Props {
    * without an inline form (thank-you, 404, legal) should pass
    * "/contact/#lead-form" explicitly. (lessons-learned #7) */
   quoteHref?: string;
+  /** Path to a social-share image, relative to the site root. Defaults to a
+   * sitewide fallback so og:image/twitter:image are never empty — override
+   * per-page once page-specific social images exist. */
+  ogImage?: string;
 }
 
 const {
@@ -22,9 +26,11 @@ const {
   noindex = false,
   canonicalPath = Astro.url.pathname,
   quoteHref = "/contact/#lead-form",
+  ogImage = "/images/property-line-bg.webp",
 } = Astro.props;
 
 const canonicalURL = new URL(canonicalPath, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -42,7 +48,9 @@ const canonicalURL = new URL(canonicalPath, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <slot name="schema" />
 
