@@ -9,7 +9,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../components/layout/BaseLayout.astro";
 import { site } from "../../lib/site-config";
-import { breadcrumbSchema } from "../../lib/schema";
+import { breadcrumbSchema, webPageSchema } from "../../lib/schema";
 
 const allPosts = (await getCollection("posts")).sort(
   (a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
@@ -22,6 +22,9 @@ const allPosts = (await getCollection("posts")).sort(
   quoteHref="/contact/#lead-form"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/blog/`, name: "Blog" })
+    )} />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(

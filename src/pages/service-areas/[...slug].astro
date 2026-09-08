@@ -9,7 +9,7 @@ import BaseLayout from "../../components/layout/BaseLayout.astro";
 import FAQ from "../../components/sections/FAQ.astro";
 import LeadForm from "../../components/sections/LeadForm.astro";
 import { site } from "../../lib/site-config";
-import { breadcrumbSchema, faqSchema } from "../../lib/schema";
+import { breadcrumbSchema, faqSchema, webPageSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
   const entries = await getCollection("locations");
@@ -30,6 +30,9 @@ const data = entry.data;
   quoteHref="#quote"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}${Astro.url.pathname}`, name: data.cityName })
+    )} />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(

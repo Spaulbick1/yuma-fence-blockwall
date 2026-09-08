@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../components/layout/BaseLayout.astro";
 import { site } from "../../lib/site-config";
-import { organizationSchema, breadcrumbSchema } from "../../lib/schema";
+import { organizationSchema, breadcrumbSchema, webPageSchema } from "../../lib/schema";
 
 const allLocations = await getCollection("locations");
 const sorted = allLocations.sort((a, b) => a.data.cityName.localeCompare(b.data.cityName));
@@ -14,6 +14,9 @@ const sorted = allLocations.sort((a, b) => a.data.cityName.localeCompare(b.data.
   quoteHref="/#quote"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/service-areas/`, name: "Service Areas" })
+    )} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
     <script
       type="application/ld+json"

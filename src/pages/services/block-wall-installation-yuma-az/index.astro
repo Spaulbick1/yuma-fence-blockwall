@@ -4,7 +4,7 @@ import BaseLayout from "../../../components/layout/BaseLayout.astro";
 import FAQ from "../../../components/sections/FAQ.astro";
 import LeadForm from "../../../components/sections/LeadForm.astro";
 import { site } from "../../../lib/site-config";
-import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema } from "../../../lib/schema";
+import { organizationSchema, breadcrumbSchema, faqSchema, serviceSchema, webPageSchema } from "../../../lib/schema";
 
 const allServices = await getCollection("services");
 const wallEntries = allServices
@@ -36,6 +36,9 @@ const faqItems = [
   quoteHref="#quote"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/services/block-wall-installation-yuma-az/`, name: "Block Wall & Masonry Services", mainEntityId: `https://www.${site.domain}/services/block-wall-installation-yuma-az/#service` })
+    )} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
     <script
       type="application/ld+json"

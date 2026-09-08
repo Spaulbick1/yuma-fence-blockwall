@@ -6,7 +6,7 @@
 import BaseLayout from "../../components/layout/BaseLayout.astro";
 import LeadForm from "../../components/sections/LeadForm.astro";
 import { site } from "../../lib/site-config";
-import { breadcrumbSchema } from "../../lib/schema";
+import { breadcrumbSchema, webPageSchema } from "../../lib/schema";
 ---
 
 <BaseLayout
@@ -15,6 +15,9 @@ import { breadcrumbSchema } from "../../lib/schema";
   quoteHref="#lead-form"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/contact/`, name: "Contact" })
+    )} />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(

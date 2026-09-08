@@ -22,6 +22,7 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `https://www.${site.domain}/#organization`,
     name: site.brandName,
     url: `https://www.${site.domain}`,
     areaServed: site.serviceArea.cities.map((c) => ({
@@ -35,6 +36,7 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `https://www.${site.domain}/#website`,
     name: site.brandName,
     url: `https://www.${site.domain}`,
   };
@@ -79,6 +81,7 @@ export function serviceSchema(opts: {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${opts.url}#service`,
     name: opts.name,
     description: opts.description,
     url: opts.url,
@@ -91,5 +94,27 @@ export function serviceSchema(opts: {
       "@type": "City",
       name: c,
     })),
+  };
+}
+
+// New (Operating Rule 14, 2026-09-08): every page must carry a WebPage node
+// with a stable @id, and the page(s) that carry a Service node must link
+// mainEntity to that Service's own @id (see MASTER_PROMPT Section 4/9).
+export function webPageSchema(opts: {
+  url: string;
+  name: string;
+  description?: string;
+  mainEntityId?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${opts.url}#webpage`,
+    url: opts.url,
+    name: opts.name,
+    ...(opts.description ? { description: opts.description } : {}),
+    isPartOf: { "@id": `https://www.${site.domain}/#website` },
+    about: { "@id": `https://www.${site.domain}/#organization` },
+    ...(opts.mainEntityId ? { mainEntity: { "@id": opts.mainEntityId } } : {}),
   };
 }

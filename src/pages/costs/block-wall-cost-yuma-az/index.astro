@@ -9,7 +9,7 @@ import BaseLayout from "../../../components/layout/BaseLayout.astro";
 import FAQ from "../../../components/sections/FAQ.astro";
 import LeadForm from "../../../components/sections/LeadForm.astro";
 import { site } from "../../../lib/site-config";
-import { breadcrumbSchema, faqSchema } from "../../../lib/schema";
+import { breadcrumbSchema, faqSchema, webPageSchema } from "../../../lib/schema";
 
 const faqItems = [
   {
@@ -41,6 +41,9 @@ const faqItems = [
   quoteHref="#quote"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/costs/block-wall-cost-yuma-az/`, name: "Block Wall Cost in Yuma, AZ" })
+    )} />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(

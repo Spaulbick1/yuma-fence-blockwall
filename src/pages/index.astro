@@ -6,7 +6,7 @@ import ServiceGrid from "../components/sections/ServiceGrid.astro";
 import FAQ from "../components/sections/FAQ.astro";
 import LeadForm from "../components/sections/LeadForm.astro";
 import { site } from "../lib/site-config";
-import { organizationSchema, websiteSchema, faqSchema } from "../lib/schema";
+import { organizationSchema, websiteSchema, faqSchema, webPageSchema } from "../lib/schema";
 
 // Only linking to pages that exist and resolve this phase (lessons-learned:
 // every internal href must resolve). The fence/wall hub pages list these
@@ -53,6 +53,9 @@ const faqItems = [
   quoteHref="#quote"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/`, name: `${site.brandName} | Fencing & Block Wall Contractors`, description: "Compare fencing and block wall contractors in Yuma, AZ. Real cost guides, City of Yuma permit rules, and a free-quote request — no obligation." })
+    )} />
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema())} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema())} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqItems))} />

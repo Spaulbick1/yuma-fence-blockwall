@@ -8,7 +8,7 @@
 // wizard-only text (lessons-learned #3).
 import BaseLayout from "../../components/layout/BaseLayout.astro";
 import { site } from "../../lib/site-config";
-import { breadcrumbSchema } from "../../lib/schema";
+import { breadcrumbSchema, webPageSchema } from "../../lib/schema";
 
 const lastUpdated = "August 16, 2026";
 ---
@@ -19,6 +19,9 @@ const lastUpdated = "August 16, 2026";
   quoteHref="/contact/#lead-form"
 >
   <Fragment slot="schema">
+    <script type="application/ld+json" set:html={JSON.stringify(
+      webPageSchema({ url: `https://www.${site.domain}/privacy-policy/`, name: "Privacy Policy" })
+    )} />
     <script
       type="application/ld+json"
       set:html={JSON.stringify(
