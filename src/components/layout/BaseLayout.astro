@@ -64,9 +64,10 @@ const ogImageURL = new URL(ogImage, Astro.site);
           />
           <script is:inline define:vars={{ GA4_ID: import.meta.env.PUBLIC_GA4_ID }}>
             window.dataLayer = window.dataLayer || [];
-            function gtag() {
+            window.gtag = function gtag() {
               dataLayer.push(arguments);
-            }
+            };
+          var gtag = window.gtag;
             gtag("js", new Date());
             gtag("config", GA4_ID);
           </script>
