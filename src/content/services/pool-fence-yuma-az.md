@@ -8,7 +8,7 @@ costNote: "Pool-barrier fencing can be built in wood, vinyl, wrought iron, alumi
 licenseNote: "Arizona ROC R-14 (Fencing) covers a pool-barrier fence; a masonry pool-enclosure wall falls under R-31 (Masonry)."
 faq:
   - question: "Does Arizona require a pool fence?"
-    answer: "Yes. Arizona law (A.R.S. § 36-1681) requires a barrier at least 5 feet tall around most residential pools and spas, with no opening large enough to pass a 4-inch-diameter sphere, set back at least 20 inches from the water's edge, and a gate that opens outward and is self-closing and self-latching with the latch at least 54 inches above the ground (or a padlock/keyed alternative if the latch sits lower)."
+    answer: "Yes. Arizona law (<a href=\"https://www.azleg.gov/ars/36/01681.htm\" target=\"_blank\" rel=\"noopener\">A.R.S. § 36-1681</a>) requires a barrier at least 5 feet tall around most residential pools and spas, with no opening large enough to pass a 4-inch-diameter sphere, set back at least 20 inches from the water's edge, and a gate that opens outward and is self-closing and self-latching with the latch at least 54 inches above the ground (or a padlock/keyed alternative if the latch sits lower)."
     # AZ-011
   - question: "Does the '48-inch fence' figure I've seen for pool safety apply in Yuma?"
     answer: "No — that figure is a national guideline, and it's below Arizona's actual legal minimum. Arizona's barrier requirement is 5 feet (60 inches), not 48 inches. A pool guidance page repeating '48 inches' is describing a less-strict national standard, not the law that applies in Yuma; don't rely on it for a compliant install."
@@ -27,7 +27,7 @@ A pool-barrier fence has one job an ordinary yard fence doesn't: satisfying a sp
 
 ## Arizona's baseline requirement
 
-State law (A.R.S. § 36-1681) applies to any outdoor pool or spa at least 18 inches deep and wider than 8 feet at any point. The core figures, direct from the statute:
+State law ([A.R.S. § 36-1681](https://www.azleg.gov/ars/36/01681.htm)) applies to any outdoor pool or spa at least 18 inches deep and wider than 8 feet at any point. The core figures, direct from the statute:
 
 - Barrier height **at least 5 feet**, measured on the exterior side.
 - No opening large enough to pass a **4-inch-diameter sphere** — the test manufacturers and inspectors actually use.
