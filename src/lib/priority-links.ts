@@ -71,5 +71,26 @@ export const PRIORITY_ALL_SERVICES = [
   { href: '/services/retaining-wall-yuma-az/', label: 'Retaining wall' },
 ] as const;
 
+/**
+ * Orphan fix (2026-09-26): the five city pages and four blog posts had 1-4 inbound links.
+ * They now get a link from the footer (city names in the "Serving" line, posts in "From the
+ * blog") AND from these two lines in the block, so each ends up with ~2 links per page.
+ */
+export const PRIORITY_AREAS = [
+  { href: '/service-areas/yuma-az/', label: 'Yuma' },
+  { href: '/service-areas/fortuna-foothills-az/', label: 'Fortuna Foothills' },
+  { href: '/service-areas/san-luis-az/', label: 'San Luis' },
+  { href: '/service-areas/somerton-az/', label: 'Somerton' },
+  { href: '/service-areas/wellton-az/', label: 'Wellton' },
+  { href: '/service-areas/', label: 'all service areas' },
+] as const;
+
+export const PRIORITY_POSTS = [
+  { href: '/blog/monsoon-wind-fence-wall-damage-yuma/', label: 'Monsoon wind damage' },
+  { href: '/blog/caliche-soil-block-wall-footings-yuma/', label: 'Caliche soil & block wall footings' },
+  { href: '/blog/hoa-fence-wall-rules-yuma/', label: 'HOA fence & wall rules' },
+  { href: '/blog/snowbird-season-fence-wall-checklist-yuma/', label: 'Snowbird season checklist' },
+] as const;
+
 /** Pages where the block must not render (legal, utility). Prefix match. */
 export const PRIORITY_EXCLUDE = ['/privacy-policy', '/terms', '/thank-you', '/404'] as const;

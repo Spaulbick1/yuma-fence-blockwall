@@ -4,13 +4,15 @@
  * on every indexable page. See lib/priority-links.ts for the why and the list.
  * Skips the current page so nothing self-links.
  */
-import { PRIORITY_LINKS, PRIORITY_ALL_SERVICES, PRIORITY_EXCLUDE } from '../../lib/priority-links';
+import { PRIORITY_LINKS, PRIORITY_ALL_SERVICES, PRIORITY_AREAS, PRIORITY_POSTS, PRIORITY_EXCLUDE } from '../../lib/priority-links';
 
 const path = Astro.url.pathname;
 const current = path.endsWith('/') ? path : `${path}/`;
 const excluded = PRIORITY_EXCLUDE.some((p) => current.startsWith(p));
 const links = PRIORITY_LINKS.filter((l) => l.href !== current);
 const all = PRIORITY_ALL_SERVICES.filter((l) => l.href !== current);
+const areas = PRIORITY_AREAS.filter((l) => l.href !== current);
+const posts = PRIORITY_POSTS.filter((l) => l.href !== current);
 const [first, second] = links;
 ---
 
@@ -40,6 +42,22 @@ const [first, second] = links;
         {all.map((a, i) => (
           <>
             <a href={a.href} class="font-semibold text-caliche-dark underline underline-offset-2">{a.label}</a>{i < all.length - 1 ? ' · ' : ''}
+          </>
+        ))}
+      </p>
+      <p class="mt-2 text-fluid-sm text-muted">
+        Areas we cover:{' '}
+        {areas.map((a, i) => (
+          <>
+            <a href={a.href} class="font-semibold text-caliche-dark underline underline-offset-2">{a.label}</a>{i < areas.length - 1 ? ' · ' : ''}
+          </>
+        ))}
+      </p>
+      <p class="mt-2 text-fluid-sm text-muted">
+        From the blog:{' '}
+        {posts.map((a, i) => (
+          <>
+            <a href={a.href} class="font-semibold text-caliche-dark underline underline-offset-2">{a.label}</a>{i < posts.length - 1 ? ' · ' : ''}
           </>
         ))}
       </p>

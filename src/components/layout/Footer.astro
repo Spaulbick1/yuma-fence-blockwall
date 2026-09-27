@@ -1,5 +1,6 @@
 ---
 import { site } from "../../lib/site-config";
+import { PRIORITY_POSTS as FOOTER_POSTS } from "../../lib/priority-links";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -52,7 +53,23 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div class="mt-7 border-t border-white/15 pt-5 text-fluid-sm text-white/70">
-      <p>Serving {site.serviceArea.cities.join(", ")}.</p>
+      <!-- City and blog links: these pages had 1-4 inbound links before (orphan fix, 2026-09-26). -->
+      <p>
+        Serving{" "}
+        {site.serviceArea.cities.map((city, i) => (
+          <>
+            <a href={`/service-areas/${city.toLowerCase().replace(/\s+/g, "-")}-az/`} class="hover:text-white hover:underline">{city}</a>{i < site.serviceArea.cities.length - 1 ? ", " : "."}
+          </>
+        ))}
+      </p>
+      <p class="mt-2.5">
+        From the blog:{" "}
+        {FOOTER_POSTS.map((p, i) => (
+          <>
+            <a href={p.href} class="hover:text-white hover:underline">{p.label}</a>{i < FOOTER_POSTS.length - 1 ? " · " : ""}
+          </>
+        ))}
+      </p>
       <!-- Third-party disclosure — rendered verbatim from site-config, once
            per surface (compliance.md rule 3). -->
       <p class="mt-2.5 max-w-3xl">{site.disclosure}</p>
