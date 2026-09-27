@@ -1,0 +1,48 @@
+---
+/**
+ * RelatedServices: in-body "next steps" block rendered by BaseLayout at the bottom of <main>
+ * on every indexable page. See lib/priority-links.ts for the why and the list.
+ * Skips the current page so nothing self-links.
+ */
+import { PRIORITY_LINKS, PRIORITY_ALL_SERVICES, PRIORITY_EXCLUDE } from '../../lib/priority-links';
+
+const path = Astro.url.pathname;
+const current = path.endsWith('/') ? path : `${path}/`;
+const excluded = PRIORITY_EXCLUDE.some((p) => current.startsWith(p));
+const links = PRIORITY_LINKS.filter((l) => l.href !== current);
+const all = PRIORITY_ALL_SERVICES.filter((l) => l.href !== current);
+const [first, second] = links;
+---
+
+{!excluded && (
+  <aside aria-labelledby="related-heading" class="container-content mt-16 mb-16">
+    <div class="rounded-lg border border-sand bg-white p-6 md:p-8">
+      <h2 id="related-heading" class="mb-2 text-fluid-2xl">Popular next steps in Yuma</h2>
+      <p class="mb-5 text-muted">
+        Many homeowners start with
+        <a href={first.href} class="font-semibold text-caliche-dark underline underline-offset-2">{first.label.toLowerCase()}</a>
+        or
+        <a href={second.href} class="font-semibold text-caliche-dark underline underline-offset-2">{second.label.toLowerCase()}</a>
+        before they request a quote.
+      </p>
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class="block h-full rounded-md border border-sand px-4 py-3 no-underline transition-colors hover:border-caliche-dark">
+              <span class="block font-display font-semibold text-ink">{l.label}</span>
+              <span class="block text-fluid-sm text-muted">{l.desc}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-5 text-fluid-sm text-muted">
+        All fence &amp; wall services:{' '}
+        {all.map((a, i) => (
+          <>
+            <a href={a.href} class="font-semibold text-caliche-dark underline underline-offset-2">{a.label}</a>{i < all.length - 1 ? ' · ' : ''}
+          </>
+        ))}
+      </p>
+    </div>
+  </aside>
+)}
