@@ -3,7 +3,15 @@ interface ServiceItem {
   title: string;
   description: string;
   href: string;
+  icon?: string;
 }
+
+const ICONS: Record<string, string> = {
+  fence: "M4 21V9l4-3v15M12 21V9l4-3v15M8 12h8M8 16h8",
+  chainlink: "M9 8a4 4 0 1 1 0 8M15 8a4 4 0 1 0 0 8",
+  brick: "M3 5h8v4H3zM11 5h10v4H11zM3 11h8v4H3zM11 11h10v4H11zM3 17h8v4H3zM11 17h10v4H11z",
+  retain: "M3 21v-4h4v-4h4v-4h4v-4h6v16z",
+};
 interface Props {
   fenceServices: ServiceItem[];
   wallServices: ServiceItem[];
@@ -35,9 +43,14 @@ const groups = [
                     href={item.href}
                     class="card-rail flex items-center justify-between gap-4 p-4 hover:shadow-lift transition-shadow"
                   >
-                    <span>
-                      <span class="block font-display font-semibold text-ink">{item.title}</span>
-                      <span class="block text-fluid-sm text-muted">{item.description}</span>
+                    <span class="flex items-center gap-3">
+                      <svg class="text-iron shrink-0" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d={ICONS[item.icon ?? ""]} />
+                      </svg>
+                      <span>
+                        <span class="block font-display font-semibold text-ink">{item.title}</span>
+                        <span class="block text-fluid-sm text-muted">{item.description}</span>
+                      </span>
                     </span>
                     <span aria-hidden="true" class="text-caliche-dark">→</span>
                   </a>
