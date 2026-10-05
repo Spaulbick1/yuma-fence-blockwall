@@ -25,6 +25,7 @@ export function organizationSchema() {
     "@id": `https://www.${site.domain}/#organization`,
     name: site.brandName,
     url: `https://www.${site.domain}`,
+    logo: `https://www.${site.domain}/images/logo.png`, // Operating Rule 13
     areaServed: site.serviceArea.cities.map((c) => ({
       "@type": "City",
       name: c,

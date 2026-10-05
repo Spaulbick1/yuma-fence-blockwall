@@ -10,6 +10,7 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap({
+      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }), // Operating Rule 17: build-time <lastmod>
       filter: (page) => !page.includes("/thank-you") && !page.includes("/404"),
     }),
   ],
