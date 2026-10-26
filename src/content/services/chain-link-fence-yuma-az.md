@@ -33,7 +33,7 @@ As with any fence type set into Yuma-area soil, caliche — a naturally cemented
 
 - **Gauge and coating.** Standard galvanized chain link is the base-cost option; vinyl-coated (typically black or green) costs more but resists fading and looks more finished for a front-facing yard.
 - **Height.** 4-foot is standard for a residential perimeter or pet enclosure; taller heights (5–6 feet) for security or livestock cost more per foot.
-- **Gate count and width.** Single walk gates are inexpensive to add; double-drive gates for vehicle or RV access cost meaningfully more.
+- **Gate count and width.** Single walk gates are inexpensive to add; [double-drive gates for vehicle or RV access](/services/automatic-gate-yuma-az/) cost meaningfully more.
 - **Top rail vs. no top rail.** A top rail adds rigidity and a more finished look but adds material cost.
 - **Terrain and soil.** Caliche hardpan or a sloped lot can add labor time for post setting.
 

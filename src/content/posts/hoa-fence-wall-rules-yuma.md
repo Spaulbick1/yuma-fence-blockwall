@@ -65,7 +65,7 @@ Many HOAs require submitting a fence or wall plan to an architectural review com
 3. Address any requested changes before starting construction.
 4. Keep written approval on file — useful if a future question arises about whether the completed project matches what was approved.
 
-A contractor experienced with HOA-governed Yuma subdivisions should be comfortable working within this process, including adjusting a design to match committee feedback, rather than treating it as an unusual extra step.
+A [local contractor experienced with HOA-governed Yuma subdivisions](/best-fence-block-wall-companies-yuma-az/) should be comfortable working within this process, including adjusting a design to match committee feedback, rather than treating it as an unusual extra step.
 
 ## A practical pre-project checklist
 

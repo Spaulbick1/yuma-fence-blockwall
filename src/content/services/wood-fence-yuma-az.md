@@ -21,7 +21,7 @@ publishDate: "2026-09-05"
 updatedDate: "2026-09-05"
 ---
 
-Wood privacy fencing is the classic full-privacy option in Yuma — a lower upfront cost than vinyl or wrought iron, at the price of more regular upkeep against the desert sun.
+Wood privacy fencing is the classic full-privacy option in Yuma — a lower upfront cost than vinyl or [wrought iron](/services/wrought-iron-fence-yuma-az/), at the price of more regular upkeep against the desert sun.
 
 ## What's involved
 

@@ -39,7 +39,7 @@ Caliche forms over long geological timescales in arid and semi-arid climates, as
 
 ## How a contractor typically checks for it
 
-There's no substitute for actually digging on the property in question, but an experienced local contractor has a few practical ways to get ahead of the question:
+There's no substitute for actually digging on the property in question, but an [experienced local contractor](/best-fence-block-wall-companies-yuma-az/) has a few practical ways to get ahead of the question:
 
 - **A quick test hole or two** at representative points along the planned fence or wall line, dug with hand tools or a small auger, gives a fast read on whether caliche is present near the surface and roughly how deep it runs before digging the full project.
 - **Asking neighbors or checking recent nearby projects**, informally, can sometimes give a rough sense of what to expect in a given subdivision or block, though this is never a substitute for checking the actual lot.
