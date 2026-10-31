@@ -9,6 +9,9 @@ interface Props {
   title?: string;
   subtitle?: string;
 }
+// 2026-10-31 lead-path audit: with no webhook the form now renders disabled
+// (no native GET/POST fallback can fire) and points visitors to the phone.
+const formLive = !!site.webhookUrl;
 const { title = "Get a Free Quote", subtitle = "Tell us about your project — no obligation." } = Astro.props;
 ---
 
@@ -16,7 +19,8 @@ const { title = "Get a Free Quote", subtitle = "Tell us about your project — n
   <h2 class="text-fluid-xl">{title}</h2>
   <p class="mt-1 text-fluid-sm text-muted">{subtitle}</p>
 
-  <form class="mt-6 grid gap-4" data-lead-form data-webhook-url={site.webhookUrl} aria-label="Free quote request">
+  <form class="mt-6 grid gap-4" method="post" data-lead-form data-webhook-url={site.webhookUrl} aria-label="Free quote request">
+    <fieldset disabled={!formLive} class="grid gap-4 border-0 p-0 m-0 min-w-0">
     <!-- Honeypot — hidden from real users, screened client-side before POST. -->
     <div class="hidden" aria-hidden="true">
       <label for="lf-company">Leave blank</label>
@@ -73,8 +77,12 @@ const { title = "Get a Free Quote", subtitle = "Tell us about your project — n
     <input type="hidden" name="source" value="website-lead-form" />
 
     <button type="submit" class="btn-primary justify-center" data-lead-form-submit>
-      Request My Free Quote
+      {formLive ? 'Request My Free Quote' : 'Quote requests open soon'}
     </button>
+    </fieldset>
+    {!formLive && (
+      <p class="text-fluid-sm text-muted">The online form isn't connected yet, so nothing you type is sent. Call <a href={site.phoneHref}>{site.phoneDisplay}</a> for a free quote.</p>
+    )}
     <p role="status" aria-live="polite" class="text-fluid-sm text-muted" id="lf-status"></p>
   </form>
 </div>
