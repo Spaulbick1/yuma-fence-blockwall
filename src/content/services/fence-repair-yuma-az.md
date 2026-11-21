@@ -29,7 +29,7 @@ Yuma's two biggest fence-repair drivers are climate, not age: monsoon-season win
 - **Leaning or loose posts.** A post that's leaning, wobbling, or has visibly separated from its concrete footing is a common repair call. Sometimes this is simple footing failure; caliche soil movement around a footing is a real, Yuma-specific contributing factor worth asking a contractor to check for.
 - **Sagging or misaligned gates.** Gate hardware takes repeated stress and is often the first thing to fail on an otherwise sound fence — hinges pulling loose, latches misaligning as a post shifts slightly, or a gate frame racking out of square.
 - **Sun-warped or faded wood.** Untreated or under-maintained wood fencing can warp, crack, or silver in Yuma's roughly 4,000+ annual sunshine hours faster than in milder climates — a maintenance issue that becomes a repair issue if left long enough.
-- **Storm-bent chain link.** A section of chain-link mesh or a bent terminal post after a falling branch or high-wind event during monsoon season.
+- **Storm-bent chain link.** A section of chain-link mesh or a bent terminal post after a falling branch or high-wind event during monsoon season. When the damage runs the length of a side, compare the repair quote against [new chain link fence installation in Yuma](/services/chain-link-fence-yuma-az/).
 
 ## What to check first, before calling anyone
 
